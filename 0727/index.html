@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>성준민 — Frontend Developer</title>
+<meta name="description" content="성준민의 자기소개 포트폴리오. UI/UX 설계와 성능 최적화를 담당하는 프론트엔드 개발자입니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="logo"><span class="dot"></span>성준민</div>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<button class="arrow prev" id="prevBtn" aria-label="이전 섹션">←</button>
+<button class="arrow next" id="nextBtn" aria-label="다음 섹션">→</button>
+
+<main class="track" id="track">
+
+  <section class="slide" id="home">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="avatar"><img src="profile.jpg" alt="성준민 프로필 사진"></div>
+        <div class="eyebrow">Frontend Developer</div>
+        <h1>화면의 완성도가<br><em>신뢰</em>를 만든다고 믿습니다.</h1>
+        <p class="lead">UI/UX 설계와 성능 최적화를 고민하는 프론트엔드 개발자, 성준민입니다. iOS·Android 팀 프로젝트에서 조장을 맡아 화면 디테일과 완성도를 책임졌습니다.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#projects">프로젝트 보기</a>
+          <a class="btn btn-ghost" href="#contact">연락하기</a>
+        </div>
+      </div>
+      <div class="terminal reveal">
+        <div class="terminal-bar">
+          <span class="r"></span><span class="y"></span><span class="g"></span>
+          <span class="title">profile.sh</span>
+        </div>
+        <div class="terminal-body" id="termBody"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" id="about">
+    <div class="wrap">
+      <div class="eyebrow">About</div>
+      <div class="about-grid">
+        <div class="reveal">
+          <p>경성대학교 컴퓨터공학과에서 소프트웨어 기초를 다지며, <strong>iOS·Android 팀 프로젝트에서 UI/UX 설계와 성능 최적화</strong>를 담당해왔습니다.</p>
+          <p>두 프로젝트 모두에서 조장으로서 팀의 방향을 조율했고, 사용자가 실제로 마주하는 화면의 디테일이 곧 제품의 신뢰도라는 생각으로 작업합니다.</p>
+          <p>React와 웹 기술을 기반으로 기획 의도가 왜곡 없이 전달되는 화면을 만드는 데 관심이 많습니다.</p>
+        </div>
+        <div class="traits reveal">
+          <div class="trait">
+            <span class="tag">LEAD</span>
+            <div><strong>팀 리딩</strong><p>두 개의 팀 프로젝트에서 조장을 맡아 일정과 역할을 조율했습니다.</p></div>
+          </div>
+          <div class="trait">
+            <span class="tag">UX</span>
+            <div><strong>UI/UX 설계</strong><p>사용자 흐름을 기준으로 화면 구조와 인터랙션을 설계합니다.</p></div>
+          </div>
+          <div class="trait">
+            <span class="tag">PERF</span>
+            <div><strong>성능 최적화</strong><p>모바일 앱 환경에서 렌더링과 리소스 최적화를 고려합니다.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" id="skills">
+    <div class="wrap">
+      <div class="eyebrow">Skills</div>
+      <div class="skill-groups">
+        <div class="skill-group reveal">
+          <h3>Language</h3>
+          <div class="chips">
+            <span class="chip">Java</span>
+            <span class="chip">HTML</span>
+          </div>
+        </div>
+        <div class="skill-group reveal">
+          <h3>Frontend</h3>
+          <div class="chips">
+            <span class="chip">React</span>
+            <span class="chip">CSS</span>
+          </div>
+        </div>
+        <div class="skill-group reveal">
+          <h3>Collaboration</h3>
+          <div class="chips">
+            <span class="chip">Git / GitHub</span>
+            <span class="chip">Team Lead</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" id="projects">
+    <div class="wrap">
+      <div class="eyebrow">Projects</div>
+      <div class="proj-list">
+
+        <div class="proj-card reveal">
+          <div>
+            <div class="proj-head">
+              <h3>LearnSpot&nbsp;iOS</h3>
+              <span class="proj-role">Team Lead · UI/UX &amp; Optimization</span>
+            </div>
+            <p class="proj-desc">iOS 팀 프로젝트로, UI/UX 설계와 성능 최적화를 담당하고 조장으로 팀을 이끌었습니다.</p>
+            <div class="diffs">
+              <span class="diff plus">+ UI/UX</span>
+              <span class="diff plus">+ 최적화</span>
+            </div>
+            <div class="proj-stack">
+              <span class="chip">Swift</span>
+              <span class="chip">iOS</span>
+            </div>
+          </div>
+          <a class="proj-link" href="https://github.com/232JBJBJBJB/LearnSpot-iOS/" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+
+        <div class="proj-card reveal">
+          <div>
+            <div class="proj-head">
+              <h3>Android&nbsp;Project</h3>
+              <span class="proj-role">Team Lead · UI/UX &amp; Optimization</span>
+            </div>
+            <p class="proj-desc">Android 팀 프로젝트로, UI/UX 설계와 성능 최적화를 담당하고 조장으로 팀을 이끌었습니다.</p>
+            <div class="diffs">
+              <span class="diff plus">+ UI/UX</span>
+              <span class="diff plus">+ 최적화</span>
+            </div>
+            <div class="proj-stack">
+              <span class="chip">Java</span>
+              <span class="chip">Android</span>
+            </div>
+          </div>
+          <a class="proj-link" href="https://github.com/seungc1/androidProject" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" id="education">
+    <div class="wrap">
+      <div class="eyebrow">Education</div>
+      <div class="reveal">
+        <div class="edu-row">
+          <span class="edu-school">경성대학교 · 컴퓨터공학과</span>
+          <span class="edu-period">4학년 재학</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" id="contact">
+    <div class="wrap contact-wrap">
+      <div class="eyebrow" style="justify-content:center;">Contact</div>
+      <h2 class="reveal">함께 만들고 싶은 화면이 있다면,<br>언제든 편하게 연락 주세요.</h2>
+      <div class="contact-links reveal">
+        <a class="btn btn-primary" href="mailto:hgf8489@naver.com">✉ hgf8489@naver.com</a>
+        <a class="btn btn-ghost" href="https://github.com/iseongu123" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+      <p class="footnote">© 2026 Seong Junmin. Built with HTML &amp; CSS.</p>
+    </div>
+  </section>
+
+</main>
+
+<div class="dots" id="dots"></div>
+
+<script>
+  const track = document.getElementById('track');
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const dotsWrap = document.getElementById('dots');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const dots = slides.map((s, i) => {
+    const d = document.createElement('button');
+    d.className = 'dot';
+    d.setAttribute('aria-label', (i + 1) + '번 섹션으로 이동');
+    d.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(d);
+    return d;
+  });
+
+  function currentIndex() {
+    return Math.round(track.scrollLeft / track.clientWidth);
+  }
+
+  function goTo(i) {
+    i = Math.max(0, Math.min(slides.length - 1, i));
+    track.scrollTo({ left: slides[i].offsetLeft, behavior: reduceMotion ? 'auto' : 'smooth' });
+  }
+
+  function syncUI() {
+    const idx = currentIndex();
+    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    prevBtn.disabled = idx === 0;
+    nextBtn.disabled = idx === slides.length - 1;
+  }
+
+  prevBtn.addEventListener('click', () => goTo(currentIndex() - 1));
+  nextBtn.addEventListener('click', () => goTo(currentIndex() + 1));
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); goTo(currentIndex() + 1); }
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); goTo(currentIndex() - 1); }
+  });
+
+  let wheelLocked = false;
+  track.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    if (wheelLocked) return;
+    const delta = Math.abs(e.deltaY) >= Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+    if (Math.abs(delta) < 4) return;
+    wheelLocked = true;
+    if (delta > 0) goTo(currentIndex() + 1); else goTo(currentIndex() - 1);
+    setTimeout(() => { wheelLocked = false; }, 550);
+  }, { passive: false });
+
+  track.addEventListener('scroll', () => { requestAnimationFrame(syncUI); }, { passive: true });
+  window.addEventListener('resize', syncUI);
+
+  document.querySelectorAll('nav a[href^="#"]').forEach((a) => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      const idx = slides.indexOf(target);
+      if (idx > -1) goTo(idx);
+    });
+  });
+
+  syncUI();
+
+  const items = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { root: track, threshold: 0.3 });
+    items.forEach((el) => io.observe(el));
+  } else {
+    items.forEach((el) => el.classList.add('in'));
+  }
+
+  const lines = [
+    { prompt: '$ whoami', val: '성준민 — Frontend Developer' },
+    { prompt: '$ role',   val: 'UI/UX Lead · Performance Optimization' },
+    { prompt: '$ stack',  val: 'React · HTML · CSS · Java' },
+    { prompt: '$ status', val: '경성대학교 컴퓨터공학과 4학년', tag: true }
+  ];
+  const body = document.getElementById('termBody');
+
+  function renderStatic() {
+    body.innerHTML = lines.map((l) =>
+      '<div class="line"><span class="prompt">' + l.prompt + '</span><br><span class="' + (l.tag ? 'tag' : 'val') + '">' + l.val + '</span></div>'
+    ).join('');
+  }
+
+  async function typeSequence() {
+    for (const l of lines) {
+      const lineEl = document.createElement('div');
+      lineEl.className = 'line';
+      const promptEl = document.createElement('span');
+      promptEl.className = 'prompt';
+      promptEl.textContent = l.prompt;
+      lineEl.appendChild(promptEl);
+      lineEl.appendChild(document.createElement('br'));
+      const valEl = document.createElement('span');
+      valEl.className = l.tag ? 'tag' : 'val';
+      lineEl.appendChild(valEl);
+      const cursor = document.createElement('span');
+      cursor.className = 'cursor';
+      lineEl.appendChild(cursor);
+      body.appendChild(lineEl);
+
+      for (let i = 0; i < l.val.length; i++) {
+        valEl.textContent += l.val[i];
+        await new Promise((r) => setTimeout(r, 22));
+      }
+      cursor.remove();
+      await new Promise((r) => setTimeout(r, 260));
+    }
+  }
+
+  if (reduceMotion) { renderStatic(); } else { typeSequence(); }
+</script>
+
+</body>
+</html>
