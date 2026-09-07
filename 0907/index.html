@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>K-TRIP NAVI | 韓国旅行パーフェクトガイド (2026年最新版)</title>
+  <meta name="description" content="日本人旅行者のための2026年最新・完全網羅型韓国旅行ガイド。ビザ免除最新状況、電子入国申告書(e-Arrival Card)、WOWPASS、交通アプリ、おすすめスポット、免税、緊急会話カードを徹底解説。">
+  <meta property="og:title" content="K-TRIP NAVI | 韓国旅行パーフェクトガイド">
+  <meta property="og:description" content="日本人旅行者向け2026年最新情報。K-ETA免除、e-Arrival Card、交通・決済、聖水・釜山・済州ガイド、ワンタッチ韓国語会話カード搭載。">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a'
+            },
+            point: {
+              red: '#be123c',
+              amber: '#b45309',
+              green: '#15803d'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- Favicon (SVG Data URI) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231d4ed8'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>">
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col font-sans">
+
+  <!-- ========================================================================
+       1. GNB & Header (Sticky, ScrollSpy, Mobile Drawer)
+       ======================================================================== -->
+  <header id="mainHeader" class="sticky top-0 z-40 bg-white/95 backdrop-blur-none border-b border-slate-200 transition-shadow">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <!-- 로고 -->
+      <a href="#" class="flex items-center gap-2 text-slate-900 group">
+        <span class="w-8 h-8 rounded bg-blue-700 text-white flex items-center justify-center font-bold text-lg tracking-wider">
+          K
+        </span>
+        <div class="flex flex-col">
+          <span class="font-extrabold text-lg tracking-tight text-blue-800 leading-none">K-TRIP NAVI</span>
+          <span class="text-[10px] text-slate-500 font-semibold tracking-wider">韓国旅行実戦ガイド</span>
+        </div>
+      </a>
+
+      <!-- 데스크톱 네비게이션 -->
+      <nav class="hidden lg:flex items-center space-x-1" aria-label="メインナビゲーション">
+        <a href="#hero" class="nav-link px-3 py-2 text-sm font-semibold text-slate-700 hover:text-blue-700 transition-colors">ホーム</a>
+        <a href="#checklist" class="nav-link px-3 py-2 text-sm font-semibold text-slate-700 hover:text-blue-700 transition-colors">入国準備</a>
+        <a href="#transit" class="nav-link px-3 py-2 text-sm font-semibold text-slate-700 hover:text-blue-700 transition-colors">交通・決済</a>
+        <a href="#exchange" class="nav-link px-3 py-2 text-sm font-semibold text-slate-700 hover:text-blue-700 transition-colors">両替・免税</a>
+        <a href="#spots" class="nav-link px-3 py-2 text-sm font-semibold text-slate-700 hover:text-blue-700 transition-colors">地域スポット</a>
+        <a href="#kpop" class="nav-link px-3 py-2 text-sm font-semibold text-slate-700 hover:text-blue-700 transition-colors">K-POP</a>
+        <a href="#food" class="nav-link px-3 py-2 text-sm font-semibold text-slate-700 hover:text-blue-700 transition-colors">グルメ</a>
+        <a href="#season" class="nav-link px-3 py-2 text-sm font-semibold text-slate-700 hover:text-blue-700 transition-colors">気候・連休</a>
+        <a href="#emergency" class="nav-link px-3 py-2 text-sm font-semibold text-rose-700 hover:text-rose-800 font-bold transition-colors">緊急会話</a>
+      </nav>
+
+      <!-- 모바일 햄버거 토글 버튼 -->
+      <div class="flex items-center gap-2 lg:hidden">
+        <button id="drawerToggle" type="button" aria-expanded="false" aria-controls="mobileDrawer" aria-label="メニューを開く"
+          class="p-2 rounded border border-slate-300 text-slate-700 hover:bg-slate-100 transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- 모바일 드로어 (Drawer Menu) -->
+  <div id="mobileDrawer" class="fixed inset-0 z-50 bg-slate-900/60 hidden print-hidden" role="dialog" aria-modal="true" aria-label="モバイルメニュー">
+    <div class="fixed inset-y-0 right-0 max-w-xs w-full bg-white shadow-xl flex flex-col p-6 z-50">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-200">
+        <span class="font-bold text-slate-900 text-base tracking-tight">メニュー</span>
+        <button id="drawerClose" type="button" aria-label="メニューを閉じる"
+          class="p-2 rounded text-slate-500 hover:text-slate-800 hover:bg-slate-100">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <nav class="flex flex-col space-y-2 py-4">
+        <a href="#hero" class="px-3 py-2 text-sm font-semibold text-slate-800 rounded hover:bg-slate-100">ホーム</a>
+        <a href="#checklist" class="px-3 py-2 text-sm font-semibold text-slate-800 rounded hover:bg-slate-100">入国準備チェックリスト</a>
+        <a href="#transit" class="px-3 py-2 text-sm font-semibold text-slate-800 rounded hover:bg-slate-100">交通・決済ガイド</a>
+        <a href="#exchange" class="px-3 py-2 text-sm font-semibold text-slate-800 rounded hover:bg-slate-100">両替・免税（タックスリファン）</a>
+        <a href="#spots" class="px-3 py-2 text-sm font-semibold text-slate-800 rounded hover:bg-slate-100">地域別おすすめスポット</a>
+        <a href="#kpop" class="px-3 py-2 text-sm font-semibold text-slate-800 rounded hover:bg-slate-100">K-POP・韓流ガイド</a>
+        <a href="#food" class="px-3 py-2 text-sm font-semibold text-slate-800 rounded hover:bg-slate-100">グルメ＆マナー</a>
+        <a href="#season" class="px-3 py-2 text-sm font-semibold text-slate-800 rounded hover:bg-slate-100">気候・服装・大型連休注意</a>
+        <a href="#emergency" class="px-3 py-2 text-sm font-bold text-rose-700 rounded hover:bg-rose-50">緊急サポート・会話カード</a>
+      </nav>
+      <div class="mt-auto pt-4 border-t border-slate-200">
+        <div class="text-xs text-slate-500">2026年最新規定準拠</div>
+      </div>
+    </div>
+  </div>
+
+  <main class="flex-grow">
+
+    <!-- ========================================================================
+         2. 히어로 섹션 (Hero Section)
+         ======================================================================== -->
+    <section id="hero" class="bg-gradient-to-b from-blue-50 to-white py-12 md:py-16 border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- 타이틀 및 소개 문구 -->
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-blue-100 text-blue-800 text-xs font-bold uppercase tracking-wider mb-4 border border-blue-200">
+            <span>[2026年9月最新版]</span>
+            <span>日本人旅行者専用ナビ</span>
+          </div>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            迷わず楽しむ、スマートな韓国旅行。<br>
+            <span class="text-blue-700">準備から緊急会話まで</span>完全サポート
+          </h1>
+          <p class="mt-4 text-base sm:text-lg text-slate-700 leading-relaxed font-normal">
+            最新の入国条件（K-ETA免除延長・電子入国申告書必須化）に対応。現地で本当に使えるキャッシュレス決済、交通アプリ、リアルなトレンドスポット、指差し韓国語会話カードを1ページに凝縮しました。
+          </p>
+        </div>
+
+        <!-- 여행자 필수 3종 퀵 배너 -->
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+          
+          <!-- 퀵 배너 1: WOWPASS / T-Money -->
+          <article class="solid-card rounded-lg p-5 border-l-4 border-l-blue-600">
+            <div class="flex items-center justify-between">
+              <span class="badge-solid badge-blue">決済・移動</span>
+              <span class="text-xs font-bold text-slate-500">必須度: 極高</span>
+            </div>
+            <h2 class="mt-3 text-lg font-bold text-slate-900">WOWPASS / 交通カード</h2>
+            <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-normal">
+              韓国は99%キャッシュレス社会。日本円で直接チャージでき、交通カード機能(T-Money)も一体化した「WOWPASS」が圧倒的におすすめです。
+            </p>
+          </article>
+
+          <!-- 퀵 배너 2: eSIM / Wi-Fi -->
+          <article class="solid-card rounded-lg p-5 border-l-4 border-l-emerald-600">
+            <div class="flex items-center justify-between">
+              <span class="badge-solid badge-green">通信環境</span>
+              <span class="text-xs font-bold text-slate-500">事前手配</span>
+            </div>
+            <h2 class="mt-3 text-lg font-bold text-slate-900">eSIM / ポケットWi-Fi</h2>
+            <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-normal">
+              現地での地図検索・翻訳に大容量データ通信は必須。SIMカード差し替え不要の「韓国eSIM」が主流。出発前の事前購入・QR設定が便利です。
+            </p>
+          </article>
+
+          <!-- 퀵 배너 3: 네이버맵 / 카카오맵 -->
+          <article class="solid-card rounded-lg p-5 border-l-4 border-l-amber-600">
+            <div class="flex items-center justify-between">
+              <span class="badge-solid badge-amber">地図アプリ</span>
+              <span class="text-xs font-bold text-point-amber font-bold">Googleマップ不可</span>
+            </div>
+            <h2 class="mt-3 text-lg font-bold text-slate-900">NAVER Map / カカオマップ</h2>
+            <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-normal">
+              韓国国内の安保規制によりGoogleマップの徒歩・乗換案内は正常動作しません。「NAVER Map」アプリ（日本語対応）を必ずインストールしてください。
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         3. 입국 준비 체크리스트 (Entry Checklist)
+         ======================================================================== -->
+    <section id="checklist" class="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-slate-200">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+        <div>
+          <span class="text-xs font-bold text-blue-700 tracking-wider uppercase">[事前準備] STEP 01</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">入国準備チェックリスト</h2>
+          <p class="mt-2 text-sm text-slate-600">
+            出発前に完了しているかチェックしてください。進行状況はブラウザに自動保存されます。
+          </p>
+        </div>
+
+        <!-- 리셋 버튼 -->
+        <button id="resetChecklistBtn" type="button"
+          class="self-start md:self-auto px-3 py-1.5 text-xs font-semibold text-slate-600 hover:text-rose-600 border border-slate-300 rounded hover:border-rose-300 transition-colors">
+          チェック進捗をリセット
+        </button>
+      </div>
+
+      <!-- 진행률 바 카드 -->
+      <div class="solid-card rounded-lg p-5 mb-8 bg-white">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-sm font-bold text-slate-700">準備完了度: <span id="completedCount">0</span> / <span id="totalCount">5</span> 項目</span>
+          <span id="progressPercent" class="text-base font-extrabold text-blue-700">0%</span>
+        </div>
+        <div class="w-full bg-slate-200 rounded-full h-3 overflow-hidden" role="progressbar" aria-label="チェックリスト進行率">
+          <div id="progressBar" class="progress-bar-fill h-full bg-amber-500 rounded-full w-0"></div>
+        </div>
+      </div>
+
+      <!-- 2026 규정 경고 배너 -->
+      <div class="solid-card rounded-lg p-4 mb-6 border-l-4 border-l-blue-700 bg-blue-50/50">
+        <h3 class="text-sm font-bold text-blue-900 flex items-center gap-2">
+          <span class="badge-solid badge-blue">2026年 重要規定</span>
+          <span>入国審査に関する最新事実（必ずお読みください）</span>
+        </h3>
+        <ul class="mt-2 text-xs sm:text-sm text-slate-700 space-y-1.5 list-disc list-inside">
+          <li><strong>K-ETAは申請不要：</strong> 日本国籍者は2026年12月31日まで一時免除が継続されています。</li>
+          <li><strong>e-Arrival Card（電子入国申告書）は【必須】：</strong> K-ETA免除者は全員提出対象です。従来の紙の申告書に代わり、入国前にオンラインで事前提出してください。</li>
+          <li><strong>Q-CODEは不要：</strong> 日本からの直行便利用者には検疫Q-CODEの提出義務はありません。</li>
+        </ul>
+      </div>
+
+      <!-- 체크리스트 항목들 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        
+        <!-- 체크 항목 1 -->
+        <label for="chk_passport" class="solid-card rounded-lg p-4 flex items-start gap-3 cursor-pointer select-none">
+          <input type="checkbox" id="chk_passport" class="checklist-item-input custom-checkbox-input mt-1">
+          <div class="checklist-label text-sm text-slate-800">
+            <span class="font-bold block text-slate-900">パスポートの残存有効期間の確認</span>
+            <span class="text-xs text-slate-600 block mt-0.5">入国時に3ヶ月以上（余裕を持って6ヶ月以上推奨）あることをご確認ください。</span>
+          </div>
+        </label>
+
+        <!-- 체크 항목 2 -->
+        <label for="chk_earrival" class="solid-card rounded-lg p-4 flex items-start gap-3 cursor-pointer select-none border-blue-300">
+          <input type="checkbox" id="chk_earrival" class="checklist-item-input custom-checkbox-input mt-1">
+          <div class="checklist-label text-sm text-slate-800">
+            <span class="font-bold block text-blue-950">e-Arrival Card（電子入国申告書）のオンライン提出【必須】</span>
+            <span class="text-xs text-slate-600 block mt-0.5">搭乗前・出発72時間前〜前日までに公式ポータルより登録を完了させてください。</span>
+          </div>
+        </label>
+
+        <!-- 체크 항목 3 -->
+        <label for="chk_adapter" class="solid-card rounded-lg p-4 flex items-start gap-3 cursor-pointer select-none">
+          <input type="checkbox" id="chk_adapter" class="checklist-item-input custom-checkbox-input mt-1">
+          <div class="checklist-label text-sm text-slate-800">
+            <span class="font-bold block text-slate-900">220V対応 Cタイプ/SE(F)タイプ 変換プラグの準備</span>
+            <span class="text-xs text-slate-600 block mt-0.5">韓国の電圧は220V（日本の100V・A型プラグとは形状が異なります）。100円ショップ等で購入可。</span>
+          </div>
+        </label>
+
+        <!-- 체크 항목 4 -->
+        <label for="chk_card" class="solid-card rounded-lg p-4 flex items-start gap-3 cursor-pointer select-none">
+          <input type="checkbox" id="chk_card" class="checklist-item-input custom-checkbox-input mt-1">
+          <div class="checklist-label text-sm text-slate-800">
+            <span class="font-bold block text-slate-900">海外決済可能クレジットカード（またはWOWPASS）</span>
+            <span class="text-xs text-slate-600 block mt-0.5">VISA・Mastercard推奨。現地空港キオスクでWOWPASSを発行すると両替・決済がスムーズです。</span>
+          </div>
+        </label>
+
+        <!-- 체크 항목 5 -->
+        <label for="chk_esim" class="solid-card rounded-lg p-4 flex items-start gap-3 cursor-pointer select-none">
+          <input type="checkbox" id="chk_esim" class="checklist-item-input custom-checkbox-input mt-1">
+          <div class="checklist-label text-sm text-slate-800">
+            <span class="font-bold block text-slate-900">韓国eSIMまたはローミング・Wi-Fiの予約</span>
+            <span class="text-xs text-slate-600 block mt-0.5">NAVER Map利用や通訳アプリに安定した通信環境が不可欠です。</span>
+          </div>
+        </label>
+
+      </div>
+
+    </section>
+
+    <!-- ========================================================================
+         4. 교통 & 결제 가이드 (Transit & Payment)
+         ======================================================================== -->
+    <section id="transit" class="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-slate-200">
+      
+      <div class="mb-8">
+        <span class="text-xs font-bold text-blue-700 tracking-wider uppercase">[移動・支払い] STEP 02</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">交通＆キャッシュレス決済ガイド</h2>
+        <p class="mt-2 text-sm text-slate-600">
+          韓国の移動手段と支払いルールを把握しておけば、空港到着直後から安心です。
+        </p>
+      </div>
+
+      <!-- 지도 앱 주의사항 콜아웃 -->
+      <div class="solid-card rounded-lg p-5 mb-8 border-l-4 border-l-amber-600 bg-amber-50/40">
+        <h3 class="text-base font-bold text-amber-950 flex items-center gap-2">
+          <span class="badge-solid badge-amber">警告</span>
+          <span>Googleマップは使えません！必須アプリを事前導入してください</span>
+        </h3>
+        <p class="mt-2 text-xs sm:text-sm text-slate-700 leading-relaxed">
+          韓国の国家安全保障法による地図データ国外搬出規制のため、<strong>Googleマップでは徒歩ルート案内や車のナビゲーションが機能しません。</strong><br>
+          必ず日本語に対応した<strong>「NAVER Map（ネイバーマップ）」</strong>または<strong>「KakaoMap（カカオマップ）」</strong>をダウンロードしてください。また、翻訳には韓国語のニュアンスに最も正確な<strong>「Papago（パパゴ）」</strong>アプリが圧倒的に役立ちます。
+        </p>
+      </div>
+
+      <!-- 교통수단 4종 안내 그리드 -->
+      <h3 class="text-lg font-bold text-slate-900 mb-4">主な交通機関の乗り方</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+        
+        <!-- AREX -->
+        <article class="solid-card rounded-lg p-5 flex flex-col justify-between">
+          <div>
+            <span class="badge-solid badge-blue mb-2">空港アクセス</span>
+            <h4 class="font-bold text-base text-slate-900">空港鉄道 A'REX</h4>
+            <p class="mt-2 text-xs text-slate-600 leading-relaxed">
+              仁川国際空港からソウル駅までを直結。指定席の「直通列車（約43分）」と、一般各駅停車（約59分）があります。直通列車は事前予約がお得。
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-slate-500">
+            運賃目安: 約11,000ウォン(直通)
+          </div>
+        </article>
+
+        <!-- 지하철 -->
+        <article class="solid-card rounded-lg p-5 flex flex-col justify-between">
+          <div>
+            <span class="badge-solid badge-blue mb-2">都市交通</span>
+            <h4 class="font-bold text-base text-slate-900">地下鉄（Subway）</h4>
+            <p class="mt-2 text-xs text-slate-600 leading-relaxed">
+              ソウル・釜山ともに路線網が発達。駅番号とカラーで判別可能。交通カード(T-Money/WOWPASS)を改札機にタッチして乗降します。
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-slate-500">
+            基本運賃: 1,400ウォン〜
+          </div>
+        </article>
+
+        <!-- 시내버스 -->
+        <article class="solid-card rounded-lg p-5 flex flex-col justify-between">
+          <div>
+            <span class="badge-solid badge-blue mb-2">市内バス</span>
+            <h4 class="font-bold text-base text-slate-900">路線バス（Bus）</h4>
+            <p class="mt-2 text-xs text-slate-600 leading-relaxed">
+              前扉から乗車してカードタッチ、<strong>降りる際も後扉の端末に必ずタッチ</strong>してください（乗換割引が適用されます）。
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-slate-500">
+            基本運賃: 1,500ウォン〜
+          </div>
+        </article>
+
+        <!-- 택시 앱 -->
+        <article class="solid-card rounded-lg p-5 flex flex-col justify-between">
+          <div>
+            <span class="badge-solid badge-blue mb-2">タクシー</span>
+            <h4 class="font-bold text-base text-slate-900">配車アプリ (TABA / カカオT)</h4>
+            <p class="mt-2 text-xs text-slate-600 leading-relaxed">
+              外国人向け公認タクシーアプリ<strong>「TABA（タバ）」</strong>は日本のクレカで決済可能。ぼったくり被害を完全に防げます。流しのタクシーは赤ランプが「空車(빈차)」。
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-slate-500">
+            初乗り: 4,800ウォン(ソウル)
+          </div>
+        </article>
+
+      </div>
+
+      <!-- 결제 수단 비교 가이드 -->
+      <h3 class="text-lg font-bold text-slate-900 mb-4">決済カードの選び方</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        
+        <div class="solid-card rounded-lg p-5 border-t-4 border-t-blue-700">
+          <h4 class="font-bold text-base text-slate-900">1. WOWPASS (最推奨)</h4>
+          <p class="mt-2 text-xs text-slate-600 leading-relaxed">
+            日本円の紙幣をそのまま専用キオスク機でチャージできるプリペイドカード。韓国内のほぼ全店舗でクレカ同様に使え、T-Money残高もチャージ可能。アプリで残高即時確認。
+          </p>
+        </div>
+
+        <div class="solid-card rounded-lg p-5 border-t-4 border-t-slate-400">
+          <h4 class="font-bold text-base text-slate-900">2. 日本のクレジットカード</h4>
+          <p class="mt-2 text-xs text-slate-600 leading-relaxed">
+            VISA/Mastercardであれば95%以上の飲食店・小売店で利用可能。ただし海外事務手数料（約2.0%〜3.0%前後）が各決済ごとに加算されます。
+          </p>
+        </div>
+
+        <div class="solid-card rounded-lg p-5 border-t-4 border-t-slate-400">
+          <h4 class="font-bold text-base text-slate-900">3. 現金（ウォン紙幣）</h4>
+          <p class="mt-2 text-xs text-slate-600 leading-relaxed">
+            屋台グルメ、伝統市場の小規模店舗、T-Moneyカードの地下鉄駅チャージ機でのみ必要です。2〜3泊なら1人あたり3万〜5万ウォン程度の所持で十分です。
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ========================================================================
+         5. 환전 & 택스리펀 (Currency Exchange & Tax Refund)
+         ======================================================================== -->
+    <section id="exchange" class="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-slate-200">
+      
+      <div class="mb-8">
+        <span class="text-xs font-bold text-blue-700 tracking-wider uppercase">[お得な知恵] STEP 03</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">両替比較 ＆ 免税（タックスリファンド）</h2>
+        <p class="mt-2 text-sm text-slate-600">
+          損をしないための両替ルートと、2026年拡大された即時還付制度の活用法。
+        </p>
+      </div>
+
+      <!-- 환전 3가지 비교표 -->
+      <h3 class="text-lg font-bold text-slate-900 mb-3">両替方法の徹底比較（円からウォンへ）</h3>
+      <div class="solid-card rounded-lg overflow-x-auto mb-10">
+        <table class="w-full text-left text-xs sm:text-sm border-collapse">
+          <thead>
+            <tr class="bg-slate-100 border-b border-slate-200 text-slate-800 font-bold">
+              <th class="p-3 sm:p-4">両替手段</th>
+              <th class="p-3 sm:p-4">レートの有利さ</th>
+              <th class="p-3 sm:p-4">手数料・手間</th>
+              <th class="p-3 sm:p-4">おすすめ用途</th>
+              <th class="p-3 sm:p-4">総合評価</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200 text-slate-700">
+            <tr class="hover:bg-slate-50">
+              <td class="p-3 sm:p-4 font-bold text-slate-900">明洞の民間両替所<br><span class="text-xs font-normal text-slate-500">(大使館前等)</span></td>
+              <td class="p-3 sm:p-4 text-emerald-700 font-bold">最高レート</td>
+              <td class="p-3 sm:p-4">現金持参が必要。明洞まで行く手間あり</td>
+              <td class="p-3 sm:p-4">まとまった現金（ウォン）が必要な方</td>
+              <td class="p-3 sm:p-4"><span class="badge-solid badge-green">現金派に最適</span></td>
+            </tr>
+            <tr class="hover:bg-slate-50 bg-blue-50/20">
+              <td class="p-3 sm:p-4 font-bold text-blue-900">WOWPASSカード<br><span class="text-xs font-normal text-slate-500">(主要駅キオスク)</span></td>
+              <td class="p-3 sm:p-4 text-blue-700 font-bold">良レート（空港銀行より deutlich 有利）</td>
+              <td class="p-3 sm:p-4">日本円紙幣を直接機械に投入、即カード発行</td>
+              <td class="p-3 sm:p-4">街中の買い物・カフェ・移動のメインカード</td>
+              <td class="p-3 sm:p-4"><span class="badge-solid badge-blue">利便性No.1</span></td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="p-3 sm:p-4 font-bold text-slate-900">日本のトラベルカード<br><span class="text-xs font-normal text-slate-500">(Revolut / Wise等)</span></td>
+              <td class="p-3 sm:p-4 text-slate-700 font-semibold">為替市場仲値（平日）</td>
+              <td class="p-3 sm:p-4">事前の銀行振込チャージ、休日の為替割増に注意</td>
+              <td class="p-3 sm:p-4">普段から海外送金・外貨口座を利用している方</td>
+              <td class="p-3 sm:p-4"><span class="badge-solid badge-slate">上級者向け</span></td>
+            </tr>
+            <tr class="hover:bg-slate-50 text-slate-400">
+              <td class="p-3 sm:p-4 font-normal">日本の空港・韓国の空港銀行</td>
+              <td class="p-3 sm:p-4 text-rose-600 font-bold">最も悪いレート</td>
+              <td class="p-3 sm:p-4">手数料率が高い（差額大）</td>
+              <td class="p-3 sm:p-4">到着初日の交通費（数千円分）のみに留める</td>
+              <td class="p-3 sm:p-4"><span class="badge-solid badge-red">非推奨</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 택스리펀 가이드 -->
+      <h3 class="text-lg font-bold text-slate-900 mb-3">タックスリファンド（事後免税制度）の活用法</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- 즉시 환급 -->
+        <article class="solid-card rounded-lg p-5 border-l-4 border-l-blue-700">
+          <div class="flex items-center justify-between">
+            <span class="badge-solid badge-blue">即時還付制度</span>
+            <span class="text-xs font-bold text-slate-500">最も簡単</span>
+          </div>
+          <h4 class="text-base font-bold text-slate-900 mt-2">会計時にその場で税引き（即時免税）</h4>
+          <p class="mt-2 text-xs sm:text-sm text-slate-700 leading-relaxed">
+            オリーブヤングや百貨店、主要ブランド店など「TAX FREE」表示のある加盟店で、<strong>会計時にパスポートを提示</strong>すると、消費税（付加価値税等）が引かれた金額で決済できます。
+          </p>
+          <div class="mt-3 p-3 bg-blue-50 rounded border border-blue-200 text-xs text-blue-900">
+            <strong>2026年限度額基準：</strong> 1回の購入額100万ウォン未満 / 1旅行あたりの<strong>総購入限度額500万ウォンまで</strong>即時還付が適用されます。
+          </div>
+        </article>
+
+        <!-- 사후 환급 (공항 키오스크) -->
+        <article class="solid-card rounded-lg p-5 border-l-4 border-l-slate-600">
+          <div class="flex items-center justify-between">
+            <span class="badge-solid badge-slate">事後還付制度</span>
+            <span class="text-xs font-bold text-slate-500">空港手続</span>
+          </div>
+          <h4 class="text-base font-bold text-slate-900 mt-2">空港キオスクでの還付（空港手続き）</h4>
+          <p class="mt-2 text-xs sm:text-sm text-slate-700 leading-relaxed">
+            即時還付を受けられず「免税還付伝票（Refund Cheque）」を受け取った場合のステップ：
+          </p>
+          <ol class="mt-2 text-xs text-slate-600 space-y-1.5 list-decimal list-inside">
+            <li>店舗で会計時に免税書類を発行してもらう。</li>
+            <li>仁川・金浦・金海空港の「Tax Refund」無人キオスクでパスポートとレシートをスキャン。</li>
+            <li>保安検査通過後、制限エリア内の免税払戻窓口で現金またはカード口座へ還付受領。</li>
+          </ol>
+        </article>
+
+      </div>
+
+    </section>
+
+    <!-- ========================================================================
+         6. 지역별 추천 스팟 — 탭 UI (Regional Spots - 4 Equal Tabs)
+         ======================================================================== -->
+    <section id="spots" class="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-slate-200">
+      
+      <div class="mb-8">
+        <span class="text-xs font-bold text-blue-700 tracking-wider uppercase">[観光情報] STEP 04</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">地域別おすすめスポット</h2>
+        <p class="mt-2 text-sm text-slate-600">
+          ソウル・釜山・済州・地方都市の主要見どころを完全比較。タブを切り替えてご覧いただけます。
+        </p>
+      </div>
+
+      <!-- 4개 탭 버튼 바 -->
+      <div class="flex flex-wrap gap-2 border-b border-slate-200 pb-2 mb-6" role="tablist" aria-label="地域切り替えタブ">
+        <button type="button" role="tab" aria-selected="true" aria-controls="tab-seoul" id="btn-seoul" data-tab="seoul"
+          class="tab-btn active px-4 py-2 text-sm rounded border transition-colors">
+          ソウル (Seoul)
+        </button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="tab-busan" id="btn-busan" data-tab="busan"
+          class="tab-btn px-4 py-2 text-sm rounded border transition-colors">
+          釜山 (Busan)
+        </button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="tab-jeju" id="btn-jeju" data-tab="jeju"
+          class="tab-btn px-4 py-2 text-sm rounded border transition-colors">
+          済州 (Jeju)
+        </button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="tab-others" id="btn-others" data-tab="others"
+          class="tab-btn px-4 py-2 text-sm rounded border transition-colors">
+          慶州・江陵・全州 (Other Cities)
+        </button>
+      </div>
+
+      <!-- 탭 패널 1: 서울 (Seoul) -->
+      <div id="tab-seoul" class="tab-panel" role="tabpanel" aria-labelledby="btn-seoul">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          
+          <article class="solid-card rounded-lg p-5">
+            <span class="badge-solid badge-blue mb-2">トレンド・カフェ</span>
+            <h3 class="text-base font-bold text-slate-900">聖水洞（ソンスドン）</h3>
+            <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+              古い工場をリノベーションしたお洒落カフェや、有名ブランド・K-POPのポップアップストアが立ち並ぶソウル最旬カルチャー地区。
+            </p>
+            <div class="mt-3 text-xs text-blue-700 font-semibold">アクセス: 地下鉄2号線 聖水駅</div>
+          </article>
+
+          <article class="solid-card rounded-lg p-5">
+            <span class="badge-solid badge-blue mb-2">若者の街・ファッション</span>
+            <h3 class="text-base font-bold text-slate-900">弘大（ホンデ）</h3>
+            <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+              ストリートファッション、個性派雑貨店、路上ライブが盛ん。夜遅くまで賑わうクラブや飲食店が多く、活気あるエネルギーを体感できます。
+            </p>
+            <div class="mt-3 text-xs text-blue-700 font-semibold">アクセス: 地下鉄2号線・空港鉄道 弘大入口駅</div>
+          </article>
+
+          <article class="solid-card rounded-lg p-5">
+            <span class="badge-solid badge-blue mb-2">コスメ・両替・屋台</span>
+            <h3 class="text-base font-bold text-slate-900">明洞（ミョンドン）</h3>
+            <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+              韓国コスメのフラッグシップ店が密集。日本語が最も通じやすいエリア。夕方から並ぶ屋台通りや、好レートな民間両替所が集まります。
+            </p>
+            <div class="mt-3 text-xs text-blue-700 font-semibold">アクセス: 地下鉄4号線 明洞駅 / 2号線 乙支路入口駅</div>
+          </article>
+
+          <article class="solid-card rounded-lg p-5">
+            <span class="badge-solid badge-blue mb-2">歴史・韓服体験</span>
+            <h3 class="text-base font-bold text-slate-900">北村韓屋村 ＆ 景福宮</h3>
+            <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+              朝鮮時代の伝統家屋が残る北村と、最大の古宮・景福宮。レンタル韓服（チマチョゴリ）を着用すると景福宮の入場料が無料になります。
+            </p>
+            <div class="mt-3 text-xs text-blue-700 font-semibold">アクセス: 地下鉄3号線 安国駅 / 景福宮駅</div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- 탭 패널 2: 부산 (Busan) -->
+      <div id="tab-busan" class="tab-panel hidden" role="tabpanel" aria-labelledby="btn-busan" hidden>
+        
+        <div class="solid-card rounded-lg p-4 mb-4 bg-blue-50/40 border-blue-200 text-xs sm:text-sm text-blue-950 flex flex-col sm:flex-row justify-between sm:items-center gap-2">
+          <span><strong>ソウルから釜山への移動：</strong> KTX（高速鉄道）でソウル駅から釜山駅まで約2時間15分〜2時間40分。公式「Let's Korail」サイトから事前予約推奨。</span>
+          <span class="badge-solid badge-blue self-start sm:self-auto">KTX片道 約59,800ウォン</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          
+          <article class="solid-card rounded-lg p-5">
+            <span class="badge-solid badge-blue mb-2">リゾートビーチ</span>
+            <h3 class="text-base font-bold text-slate-900">海雲台（ヘウンデ）</h3>
+            <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+              韓国屈指の美しい砂浜。海岸沿いを走るレトロな「海雲台ブルーラインパーク（海辺列車・スカイカプセル）」から望むオーシャンビューは必見。
+            </p>
+            <div class="mt-3 text-xs text-blue-700 font-semibold">最寄り: 釜山地下鉄2号線 海雲台駅</div>
+          </article>
+
+          <article class="solid-card rounded-lg p-5">
+            <span class="badge-solid badge-blue mb-2">アート・絶景</span>
+            <h3 class="text-base font-bold text-slate-900">甘川文化村（カムチョン）</h3>
+            <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+              「韓国のマチュピチュ」と称されるカラフルな階段状集落。路地裏のアートや「星の王子さまと砂漠のキツネ」像との記念撮影が大人気。
+            </p>
+            <div class="mt-3 text-xs text-blue-700 font-semibold">アクセス: 土城駅からマウルバスで約10分</div>
+          </article>
+
+          <article class="solid-card rounded-lg p-5">
+            <span class="badge-solid badge-blue mb-2">伝統水産市場</span>
+            <h3 class="text-base font-bold text-slate-900">チャガルチ市場</h3>
+            <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+              韓国最大級の水産市場。1階の生け簀で選んだヒラメやアワビ、タコを2階の食堂ですぐに刺身や鍋にして味わえる、港町ならではの体験。
+            </p>
+            <div class="mt-3 text-xs text-blue-700 font-semibold">最寄り: 釜山地下鉄1号線 チャガルチ駅</div>
+          </article>
+
+          <article class="solid-card rounded-lg p-5">
+            <span class="badge-solid badge-blue mb-2">夜景・ドローンショー</span>
+            <h3 class="text-base font-bold text-slate-900">広安里（クァンアンリ）</h3>
+            <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+              海にかかる広安大橋のライトアップが圧巻。毎週土曜夜には定期ドローンライトショーが開催され、海辺のカフェ通りから観賞できます。
+            </p>
+            <div class="mt-3 text-xs text-blue-700 font-semibold">最寄り: 釜山地下鉄2号線 広安駅</div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- 탭 패널 3: 제주 (Jeju) -->
+      <div id="tab-jeju" class="tab-panel hidden" role="tabpanel" aria-labelledby="btn-jeju" hidden>
+        
+        <div class="solid-card rounded-lg p-4 mb-4 bg-emerald-50/40 border-emerald-200 text-xs sm:text-sm text-emerald-950 flex flex-col sm:flex-row justify-between sm:items-center gap-2">
+          <span><strong>ソウルから済州島へのアクセス：</strong> 金浦国際空港（GMP）から済州国際空港（CJU）へ国内線で約1時間10分。大韓航空・アシアナ・LCC多数運航。</span>
+          <span class="badge-solid badge-green self-start sm:self-auto">国内線フライト 約1時間10分</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          
+          <article class="solid-card rounded-lg p-5">
+            <span class="badge-solid badge-green mb-2">世界自然遺産</span>
+            <h3 class="text-base font-bold text-slate-900">城山日出峰（ソンサン）</h3>
+            <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+              海上にそびえ立つ巨大な火山口冠。頂上までの階段登山路（片道約25分）からは息をのむ絶景が広がり、済州を代表する日の出の名所。
+            </p>
+            <div class="mt-3 text-xs text-emerald-700 font-semibold">東部エリア / 観光急行バス111・112番</div>
+          </article>
+
+          <article class="solid-card rounded-lg p-5">
+            <span class="badge-solid badge-green mb-2">離島・エメラルド海</span>
+            <h3 class="text-base font-bold text-slate-900">牛島（ウド）</h3>
+            <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+              城山港からフェリーで約15分の美しい離島。白い砂浜と透き通る海、名物のピーナッツアイスクリーム、電気自転車での島一周が人気です。
+            </p>
+            <div class="mt-3 text-xs text-emerald-700 font-semibold">城山浦港総合旅客ターミナルより乗船</div>
+          </article>
+
+          <article class="solid-card rounded-lg p-5">
+            <span class="badge-solid badge-green mb-2">島内交通のコツ</span>
+            <h3 class="text-base font-bold text-slate-900">レンタカー vs 急行バス</h3>
+            <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+              済州は電車がありません。国際運転免許証持参でのレンタカーが最も快適。運転しない場合は空港発の「観光急行バス（赤い800番台）」を軸に行動しましょう。
+            </p>
+            <div class="mt-3 text-xs text-emerald-700 font-semibold">T-Moneyカード利用可能</div>
+          </article>
+
+          <article class="solid-card rounded-lg p-5">
+            <span class="badge-solid badge-green mb-2">絶品名物グルメ</span>
+            <h3 class="text-base font-bold text-slate-900">黒豚サムギョプサル ＆ アワビ</h3>
+            <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+              済州特産の「黒豚（フッテジ）」の炭火焼肉と、海女さんが獲った新鮮なアワビ粥・海鮮土鍋は外せません。みかん（ハルラボン）スイーツも美味。
+            </p>
+            <div class="mt-3 text-xs text-emerald-700 font-semibold">黒豚通り（済州市内）など</div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- 탭 패널 4: 기타 지방 도시 (Others) -->
+      <div id="tab-others" class="tab-panel hidden" role="tabpanel" aria-labelledby="btn-others" hidden>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <article class="solid-card rounded-lg p-5 border-t-4 border-t-amber-700">
+            <span class="badge-solid badge-amber mb-2">新羅千年の古都</span>
+            <h3 class="text-base font-bold text-slate-900">慶州（キョンジュ）</h3>
+            <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+              町全体が「屋根のない博物館」と呼ばれる世界遺産都市。ライトアップが幻想的な「東宮と月池（アナプチ）」や古墳公園、お洒落な韓屋カフェが並ぶ「皇理団路（ファンリダンキル）」が人気。
+            </p>
+            <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-500">
+              アクセス: KTX神経州駅までソウルから約2時間
+            </div>
+          </article>
+
+          <article class="solid-card rounded-lg p-5 border-t-4 border-t-blue-600">
+            <span class="badge-solid badge-blue mb-2">青い東海岸とカフェの街</span>
+            <h3 class="text-base font-bold text-slate-900">江陵（カンヌン）</h3>
+            <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+              東海のコバルトブルーの海が広がる江原道の港町。ビーチ沿いに数十軒の名店が並ぶ「安木海辺コーヒー通り」や、ドラマロケ地で有名な注文津（チュムンジン）の防波堤がフォトスポット。
+            </p>
+            <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-500">
+              アクセス: KTX江陵線でソウル駅から約2時間
+            </div>
+          </article>
+
+          <article class="solid-card rounded-lg p-5 border-t-4 border-t-rose-600">
+            <span class="badge-solid badge-red mb-2">食の都・伝統韓屋</span>
+            <h3 class="text-base font-bold text-slate-900">全州（チョンジュ）</h3>
+            <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+              700棟以上の瓦屋根が連なる国内最大の「全州韓屋村」。本場の「全州ビビンバ」や、やかんで注文するとテーブル一杯のおかずが付いてくる「マッコリ横丁」の食文化は圧巻です。
+            </p>
+            <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-500">
+              アクセス: KTX全羅線で龍山駅から約1時間35分
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ========================================================================
+         7. K-POP & 한류 (K-POP & Hallyu Guide)
+         ======================================================================== -->
+    <section id="kpop" class="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-slate-200">
+      
+      <div class="mb-8">
+        <span class="text-xs font-bold text-blue-700 tracking-wider uppercase">[エンタメ情報] STEP 05</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">K-POP＆韓流ファン完全ガイド</h2>
+        <p class="mt-2 text-sm text-slate-600">
+          オフィシャルショップ巡り、誕生日カフェ文化、コンサート参加のルールとマナー。
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- 굿즈샵 성지 -->
+        <article class="solid-card rounded-lg p-5 flex flex-col justify-between">
+          <div>
+            <span class="badge-solid badge-blue mb-2">ショップ巡り</span>
+            <h3 class="text-base font-bold text-slate-900">グッズショップの聖地</h3>
+            <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+              聖水（SMエンタ社屋地下のKWANGYA@SEOUL）、弘大（WITHMUU、ALADIN中古店）、明洞地下街（公式・非公式グッズ）。アルバム購入特典トレカ（ラキドロ）の実施店舗もチェック必須。
+            </p>
+          </div>
+          <div class="mt-3 pt-2 text-xs text-slate-500 font-semibold border-t border-slate-100">
+            聖水・弘大・明洞が主要拠点
+          </div>
+        </article>
+
+        <!-- 센일 카페 문화 -->
+        <article class="solid-card rounded-lg p-5 flex flex-col justify-between">
+          <div>
+            <span class="badge-solid badge-blue mb-2">ファン主催文化</span>
+            <h3 class="text-base font-bold text-slate-900">センイル（誕生日）カフェ</h3>
+            <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+              アイドルの誕生日前後、ファン有志がカフェを貸し切り写真展示や限定カップホルダーを配布。X(旧Twitter)で「#アイドル名 + 生年月日」を検索して開催場所を特定します。
+            </p>
+          </div>
+          <div class="mt-3 pt-2 text-xs text-slate-500 font-semibold border-t border-slate-100">
+            1ドリンク注文で特典受領
+          </div>
+        </article>
+
+        <!-- 콘서트 티켓팅 팁 -->
+        <article class="solid-card rounded-lg p-5 flex flex-col justify-between">
+          <div>
+            <span class="badge-solid badge-blue mb-2">公演参加</span>
+            <h3 class="text-base font-bold text-slate-900">チケット予約＆音楽番組</h3>
+            <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+              韓国公演は「Interpark Global」や「Ticketlink」など外国人専用ページからパスポート名義で予約。音楽番組の事前収録（サノク）は公式ファンクラブ(Weverse等)での本人認証が必須です。
+            </p>
+          </div>
+          <div class="mt-3 pt-2 text-xs text-slate-500 font-semibold border-t border-slate-100">
+            パスポートと一致する名義必須
+          </div>
+        </article>
+
+        <!-- 팬 에티켓 (중요) -->
+        <article class="solid-card rounded-lg p-5 border-l-4 border-l-rose-700 flex flex-col justify-between">
+          <div>
+            <span class="badge-solid badge-red mb-2">厳守事項</span>
+            <h3 class="text-base font-bold text-slate-900">応援マナーとルール</h3>
+            <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+              空港や宿舎、非公開スケジュールでの過度な追っかけ行為（サセン行為）は処罰の対象となります。イベント会場ではスタッフの指示に従い、整然とした行動を心がけてください。
+            </p>
+          </div>
+          <div class="mt-3 pt-2 text-xs text-rose-800 font-bold border-t border-slate-100">
+            プライベート侵害行為厳禁
+          </div>
+        </article>
+
+      </div>
+
+    </section>
+
+    <!-- ========================================================================
+         8. 음식 & 에티켓 (Food & Etiquette)
+         ======================================================================== -->
+    <section id="food" class="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-slate-200">
+      
+      <div class="mb-8">
+        <span class="text-xs font-bold text-blue-700 tracking-wider uppercase">[食文化] STEP 06</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">韓国グルメ＆現地マナー</h2>
+        <p class="mt-2 text-sm text-slate-600">
+          「おひとり様（一人旅）」での食事のコツ、注文システム、日本と異なる生活ルール。
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        
+        <!-- 혼밥 팁 -->
+        <article class="solid-card rounded-lg p-5">
+          <span class="badge-solid badge-blue mb-2">一人旅応援</span>
+          <h3 class="text-base font-bold text-slate-900">おひとり様（ホンバッ）攻略</h3>
+          <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+            韓国の伝統料理店は「2人前〜」が基本の店（焼肉、タッカルビ、鍋類）があります。一人旅で安心なのは<strong>「分食店（キンパプ天国など）」「クッパ（スンデクッ・テジクッパ）」「中華（ジャージャー麺）」「百貨店・モールのフードコート」</strong>です。焼肉を食べたい場合は2人前注文すれば入店可能な店も多数あります。
+          </p>
+        </article>
+
+        <!-- 키오스크 & 셀프 문화 -->
+        <article class="solid-card rounded-lg p-5">
+          <span class="badge-solid badge-blue mb-2">注文ルール</span>
+          <h3 class="text-base font-bold text-slate-900">キオスク注文＆無料おかず</h3>
+          <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+            ファストフードやカフェはタッチパネル端末（キオスク）注文が主流（画面下の地球儀マークで日本語切替可能）。また、<strong>チップ文化は一切ありません。</strong>お水とおかず（キムチ等）はお代わり自由で無料ですが、「セルフ（셀프）」と書かれている場合はセルフコーナーから自分で取ります。
+          </p>
+        </article>
+
+        <!-- 생활 에티켓 -->
+        <article class="solid-card rounded-lg p-5">
+          <span class="badge-solid badge-amber mb-2">生活ルール</span>
+          <h3 class="text-base font-bold text-slate-900">喫煙規制＆お酒のマナー</h3>
+          <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+            <strong>【禁煙注意】：</strong> 駅周辺、バス停から10m以内、大通りなど屋外の路上喫煙禁止区域で喫煙すると10万ウォンの過料が科されます。必ず指定喫煙所を探してください。<br>
+            <strong>【お酒のマナー】：</strong> 目上の人と飲む際は、正面を向いて飲まず、体を横に向けて口元を手で隠して飲むのが韓国の伝統的な敬意表現です。
+          </p>
+        </article>
+
+      </div>
+
+    </section>
+
+    <!-- ========================================================================
+         9. 계절·복장 & 연휴 주의 (Seasons, Clothing & Holiday Warning)
+         ======================================================================== -->
+    <section id="season" class="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-slate-200">
+      
+      <div class="mb-8">
+        <span class="text-xs font-bold text-blue-700 tracking-wider uppercase">[渡航計画] STEP 07</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">気候・服装・大型連休の重要注意</h2>
+        <p class="mt-2 text-sm text-slate-600">
+          韓国の冬は東京や大阪とは別次元の寒さです。連休休業と服装を事前に確認してください。
+        </p>
+      </div>
+
+      <!-- 계절별 체감 온도 및 복장 가이드 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        
+        <!-- 봄 -->
+        <article class="solid-card rounded-lg p-5">
+          <span class="badge-solid badge-slate mb-2">3月〜5月</span>
+          <h3 class="text-base font-bold text-slate-900">春 (Spring)</h3>
+          <p class="mt-2 text-xs text-slate-600 leading-relaxed">
+            過ごしやすい陽気ですが、日中と朝晩の気温差が激しい季節。PM2.5（微小粒子状物質）や黄砂が飛ぶ日があるため、KF94マスクの携帯をおすすめします。
+          </p>
+          <div class="mt-3 text-xs text-slate-500 font-semibold">服装: トレンチコート、薄手ニット</div>
+        </article>
+
+        <!-- 여름 -->
+        <article class="solid-card rounded-lg p-5">
+          <span class="badge-solid badge-amber mb-2">6月〜8月</span>
+          <h3 class="text-base font-bold text-slate-900">夏 (Summer)</h3>
+          <p class="mt-2 text-xs text-slate-600 leading-relaxed">
+            高温多湿で30度を超えます。6月下旬〜7月は梅雨（チャンマ）でスコールのような大雨に注意。地下鉄や店舗内は冷房が強いため羽織りものが必要です。
+          </p>
+          <div class="mt-3 text-xs text-slate-500 font-semibold">服装: 半袖、薄手カーディガン、折りたたみ傘</div>
+        </article>
+
+        <!-- 가을 -->
+        <article class="solid-card rounded-lg p-5">
+          <span class="badge-solid badge-green mb-2">9月〜11月</span>
+          <h3 class="text-base font-bold text-slate-900">秋 (Autumn)</h3>
+          <p class="mt-2 text-xs text-slate-600 leading-relaxed">
+            空気が澄み、最も旅行に適した快適なベストシーズン。10月下旬〜11月は紅葉が見頃を迎えますが、11月に入ると急速に寒冷化が進みます。
+          </p>
+          <div class="mt-3 text-xs text-slate-500 font-semibold">服装: ジャケット、厚手セーター</div>
+        </article>
+
+        <!-- 겨울 (강조) -->
+        <article class="solid-card rounded-lg p-5 border-l-4 border-l-blue-800 bg-blue-50/20">
+          <span class="badge-solid badge-blue mb-2">12月〜2月【厳重警戒】</span>
+          <h3 class="text-base font-bold text-blue-950">冬 (Winter)</h3>
+          <p class="mt-2 text-xs text-slate-700 leading-relaxed">
+            <strong>日本の東京・大阪より遥かに寒く乾燥します。</strong>シベリア高気圧の影響でマイナス10度〜15度まで下がり、路面凍結や耳の痛む強風が発生します。
+          </p>
+          <div class="mt-3 text-xs text-blue-900 font-bold">必須: ロングダウン(ペディン)、ヒートテック重ね着、手袋、マフラー</div>
+        </article>
+
+      </div>
+
+      <!-- 명절 연휴 주의사항 경고 배너 -->
+      <div class="solid-card rounded-lg p-5 border-l-4 border-l-rose-700 bg-rose-50/40">
+        <h3 class="text-base font-bold text-rose-950 flex items-center gap-2">
+          <span class="badge-solid badge-red">注意</span>
+          <span>ソルラル（旧正月）とチュソク（秋夕）の大型連休に注意！</span>
+        </h3>
+        <p class="mt-2 text-xs sm:text-sm text-slate-700 leading-relaxed">
+          韓国の二大名節である<strong>「ソルラル（旧正月：1月下旬〜2月中旬）」</strong>と<strong>「チュソク（秋夕：9月〜10月）」</strong>の連休期間中は、個人経営の飲食店、東大門・南大門の卸売ファッション市場、地方の店舗が一斉に長期休業となります。<br>
+          また、全国民が一斉に帰省するためKTXや高速バスのチケットは即日完売します。大型ショッピングモールや一部免税店は営業しますが、旅行日程を組む際は旧暦のカレンダーを事前に必ずご確認ください。
+        </p>
+      </div>
+
+    </section>
+
+    <!-- ========================================================================
+         10. 긴급 지원 & 회화 카드 (Emergency & Phrase Cards)
+         ======================================================================== -->
+    <section id="emergency" class="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- 인쇄 시 나타나는 헤더 (웹 화면에서는 숨김) -->
+      <div class="print-only-header">
+        <h1 class="text-2xl font-bold">K-TRIP NAVI 旅行実用・指差し韓国語会話シート</h1>
+        <p class="text-xs text-slate-600">現地でそのまま使える緊急連絡先＆韓国語会話カード</p>
+      </div>
+
+      <div class="mb-8 print-hidden">
+        <span class="text-xs font-bold text-rose-700 tracking-wider uppercase">[実戦ツール] STEP 08</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">緊急サポート ＆ ワンタッチ会話カード</h2>
+        <p class="mt-2 text-sm text-slate-600">
+          カードをクリックすると画面全体に大きくハングルが表示され、店員や運転手に見せてそのまま意思疎通できます。スピーカーアイコンを押すと発音も確認できます。
+        </p>
+      </div>
+
+      <!-- 원터치 회화 카드 그리드 (8종) -->
+      <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center justify-between">
+        <span>現場ですぐ見せる指差し会話カード</span>
+        <span class="text-xs font-normal text-slate-500 print-hidden">※タップで大画面拡大表示</span>
+      </h3>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+        
+        <!-- 카드 1: 택시 이동 -->
+        <div class="solid-card phrase-card rounded-lg p-5 flex flex-col justify-between"
+          data-korean="여기 가주세요"
+          data-katakana="ヨギ カジュセヨ"
+          data-japanese="ここに行ってください（住所・地図を見せながら）"
+          data-situation="タクシー・道案内">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="badge-solid badge-blue">タクシー</span>
+              <button type="button" class="tts-btn p-1 text-blue-700 hover:text-blue-900 focus:outline-none print-hidden"
+                data-speak="여기 가주세요" title="発音を聞く" aria-label="発音を聞く">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M18.364 5.636a9 9 0 010 12.728M11 5L6 9H2v6h4l5 4V5z"/>
+                </svg>
+              </button>
+            </div>
+            <div class="text-xl font-black text-slate-900">여기 가주세요</div>
+            <div class="text-xs text-blue-700 font-bold mt-1">ヨギ カジュセヨ</div>
+          </div>
+          <div class="mt-3 pt-2 border-t border-slate-100 text-xs text-slate-600">
+            ここに行ってください
+          </div>
+        </div>
+
+        <!-- 카드 2: 식당 계산 -->
+        <div class="solid-card phrase-card rounded-lg p-5 flex flex-col justify-between"
+          data-korean="계산해 주세요"
+          data-katakana="ケサネ ジュセヨ"
+          data-japanese="お会計をお願いします"
+          data-situation="お会計">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="badge-solid badge-slate">お会計</span>
+              <button type="button" class="tts-btn p-1 text-blue-700 hover:text-blue-900 focus:outline-none print-hidden"
+                data-speak="계산해 주세요" title="発音を聞く" aria-label="発音を聞く">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M18.364 5.636a9 9 0 010 12.728M11 5L6 9H2v6h4l5 4V5z"/>
+                </svg>
+              </button>
+            </div>
+            <div class="text-xl font-black text-slate-900">계산해 주세요</div>
+            <div class="text-xs text-blue-700 font-bold mt-1">ケサネ ジュセヨ</div>
+          </div>
+          <div class="mt-3 pt-2 border-t border-slate-100 text-xs text-slate-600">
+            お会計をお願いします
+          </div>
+        </div>
+
+        <!-- 카드 3: 혼밥 가능 여부 -->
+        <div class="solid-card phrase-card rounded-lg p-5 flex flex-col justify-between"
+          data-korean="혼자 식사 가능한가요?"
+          data-katakana="ホンジャ シクサ カヌンハンガヨ？"
+          data-japanese="一人でも食事できますか？"
+          data-situation="食堂入店">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="badge-solid badge-green">食堂</span>
+              <button type="button" class="tts-btn p-1 text-blue-700 hover:text-blue-900 focus:outline-none print-hidden"
+                data-speak="혼자 식사 가능한가요?" title="発音を聞く" aria-label="発音を聞く">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M18.364 5.636a9 9 0 010 12.728M11 5L6 9H2v6h4l5 4V5z"/>
+                </svg>
+              </button>
+            </div>
+            <div class="text-xl font-black text-slate-900">혼자 식사 가능한가요?</div>
+            <div class="text-xs text-blue-700 font-bold mt-1">ホンジャ シクサ カヌンハンガヨ？</div>
+          </div>
+          <div class="mt-3 pt-2 border-t border-slate-100 text-xs text-slate-600">
+            一人でも食事できますか？
+          </div>
+        </div>
+
+        <!-- 카드 4: 맵지 않게 -->
+        <div class="solid-card phrase-card rounded-lg p-5 flex flex-col justify-between"
+          data-korean="안 맵게 해주세요"
+          data-katakana="アン メッケ ヘジュセヨ"
+          data-japanese="辛くしないでください（辛さ控えめ）"
+          data-situation="注文">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="badge-solid badge-amber">辛さ調節</span>
+              <button type="button" class="tts-btn p-1 text-blue-700 hover:text-blue-900 focus:outline-none print-hidden"
+                data-speak="안 맵게 해주세요" title="発音を聞く" aria-label="発音を聞く">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M18.364 5.636a9 9 0 010 12.728M11 5L6 9H2v6h4l5 4V5z"/>
+                </svg>
+              </button>
+            </div>
+            <div class="text-xl font-black text-slate-900">안 맵게 해주세요</div>
+            <div class="text-xs text-blue-700 font-bold mt-1">アン メッケ ヘジュセヨ</div>
+          </div>
+          <div class="mt-3 pt-2 border-t border-slate-100 text-xs text-slate-600">
+            辛くしないでください
+          </div>
+        </div>
+
+        <!-- 카드 5: 택스리펀 요청 -->
+        <div class="solid-card phrase-card rounded-lg p-5 flex flex-col justify-between"
+          data-korean="텍스리펀 되나요?"
+          data-katakana="テクスリポン テナヨ？"
+          data-japanese="免税（タックスリファンド）できますか？"
+          data-situation="ショッピング">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="badge-solid badge-blue">免税</span>
+              <button type="button" class="tts-btn p-1 text-blue-700 hover:text-blue-900 focus:outline-none print-hidden"
+                data-speak="텍스리펀 되나요?" title="発音を聞く" aria-label="発音を聞く">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M18.364 5.636a9 9 0 010 12.728M11 5L6 9H2v6h4l5 4V5z"/>
+                </svg>
+              </button>
+            </div>
+            <div class="text-xl font-black text-slate-900">텍스리펀 되나요?</div>
+            <div class="text-xs text-blue-700 font-bold mt-1">テクスリポン テナヨ？</div>
+          </div>
+          <div class="mt-3 pt-2 border-t border-slate-100 text-xs text-slate-600">
+            免税できますか？
+          </div>
+        </div>
+
+        <!-- 카드 6: 영수증 요청 -->
+        <div class="solid-card phrase-card rounded-lg p-5 flex flex-col justify-between"
+          data-korean="영수증 주세요"
+          data-katakana="ヨンスジュン ジュセヨ"
+          data-japanese="領収書（レシート）をください"
+          data-situation="お会計">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="badge-solid badge-slate">レシート</span>
+              <button type="button" class="tts-btn p-1 text-blue-700 hover:text-blue-900 focus:outline-none print-hidden"
+                data-speak="영수증 주세요" title="発音を聞く" aria-label="発音を聞く">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M18.364 5.636a9 9 0 010 12.728M11 5L6 9H2v6h4l5 4V5z"/>
+                </svg>
+              </button>
+            </div>
+            <div class="text-xl font-black text-slate-900">영수증 주세요</div>
+            <div class="text-xs text-blue-700 font-bold mt-1">ヨンスジュン ジュセヨ</div>
+          </div>
+          <div class="mt-3 pt-2 border-t border-slate-100 text-xs text-slate-600">
+            レシートをください
+          </div>
+        </div>
+
+        <!-- 카드 7: 화장실 위치 -->
+        <div class="solid-card phrase-card rounded-lg p-5 flex flex-col justify-between"
+          data-korean="화장실이 어디예요?"
+          data-katakana="ファジャンシリ オディエヨ？"
+          data-japanese="お手洗いはどこですか？"
+          data-situation="施設案内">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="badge-solid badge-slate">お手洗い</span>
+              <button type="button" class="tts-btn p-1 text-blue-700 hover:text-blue-900 focus:outline-none print-hidden"
+                data-speak="화장실이 어디예요?" title="発音を聞く" aria-label="発音を聞く">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M18.364 5.636a9 9 0 010 12.728M11 5L6 9H2v6h4l5 4V5z"/>
+                </svg>
+              </button>
+            </div>
+            <div class="text-xl font-black text-slate-900">화장실이 어디예요?</div>
+            <div class="text-xs text-blue-700 font-bold mt-1">ファジャンシリ オディエヨ？</div>
+          </div>
+          <div class="mt-3 pt-2 border-t border-slate-100 text-xs text-slate-600">
+            お手洗いはどこですか？
+          </div>
+        </div>
+
+        <!-- 카드 8: 긴급 도움 요청 -->
+        <div class="solid-card phrase-card rounded-lg p-5 border-l-4 border-l-rose-700 flex flex-col justify-between"
+          data-korean="도와주세요! 병원에 가고 싶어요"
+          data-katakana="トワジュセヨ！ ピョンウォネ カゴ シポヨ"
+          data-japanese="助けてください！病院に行きたいです"
+          data-situation="緊急・体調不良">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="badge-solid badge-red">緊急</span>
+              <button type="button" class="tts-btn p-1 text-rose-700 hover:text-rose-900 focus:outline-none print-hidden"
+                data-speak="도와주세요! 병원에 가고 싶어요" title="発音を聞く" aria-label="発音を聞く">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M18.364 5.636a9 9 0 010 12.728M11 5L6 9H2v6h4l5 4V5z"/>
+                </svg>
+              </button>
+            </div>
+            <div class="text-lg font-black text-rose-700 leading-tight">도와주세요! 병원에 가고 싶어요</div>
+            <div class="text-xs text-rose-800 font-bold mt-1">トワジュセヨ！ ピョンウォネ カゴ シポヨ</div>
+          </div>
+          <div class="mt-3 pt-2 border-t border-slate-100 text-xs text-slate-700">
+            助けてください！病院に行きたいです
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 상비약 한일 대조표 및 약국 이용 안내 -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
+        
+        <div class="lg:col-span-2 solid-card rounded-lg p-5">
+          <h3 class="text-base font-bold text-slate-900 mb-3 flex items-center justify-between">
+            <span>薬局でそのまま見せる常備薬の韓国語名称</span>
+            <span class="badge-solid badge-blue">日韓対訳表</span>
+          </h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs sm:text-sm border-collapse">
+              <thead>
+                <tr class="bg-slate-100 border-b border-slate-200 text-slate-800 font-bold">
+                  <th class="p-2.5">日本の薬品名・用途</th>
+                  <th class="p-2.5">韓国語表記（ハングル）</th>
+                  <th class="p-2.5">カタカナ読み</th>
+                  <th class="p-2.5">代表的な市販薬名例</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 text-slate-700">
+                <tr>
+                  <td class="p-2.5 font-bold text-slate-900">頭痛薬・解熱鎮痛剤</td>
+                  <td class="p-2.5 font-bold text-blue-800">두통약 / 해열진통제</td>
+                  <td class="p-2.5">トゥトンヤッ / ヘヨルジントンジェ</td>
+                  <td class="p-2.5">タイレノール (타이레놀), イジエン6</td>
+                </tr>
+                <tr>
+                  <td class="p-2.5 font-bold text-slate-900">総合風邪薬</td>
+                  <td class="p-2.5 font-bold text-blue-800">종합감기약</td>
+                  <td class="p-2.5">チョンハプカムギヤッ</td>
+                  <td class="p-2.5">パンピリン (판피린), パンコール</td>
+                </tr>
+                <tr>
+                  <td class="p-2.5 font-bold text-slate-900">胃腸薬・消化剤</td>
+                  <td class="p-2.5 font-bold text-blue-800">위장약 / 소화제</td>
+                  <td class="p-2.5">ウィジャンヤッ / ソファジェ</td>
+                  <td class="p-2.5">フェスタール (훼스탈), カス活命水</td>
+                </tr>
+                <tr>
+                  <td class="p-2.5 font-bold text-slate-900">絆創膏（バンドエイド）</td>
+                  <td class="p-2.5 font-bold text-blue-800">대일밴드 / 반창고</td>
+                  <td class="p-2.5">デイルバンドゥ / パンチャンゴ</td>
+                  <td class="p-2.5">デイルバンド (대일밴드)</td>
+                </tr>
+                <tr>
+                  <td class="p-2.5 font-bold text-slate-900">湿布（消炎鎮痛）</td>
+                  <td class="p-2.5 font-bold text-blue-800">파스</td>
+                  <td class="p-2.5">パス</td>
+                  <td class="p-2.5">新新パス (신신파스), ケトトプ</td>
+                </tr>
+                <tr>
+                  <td class="p-2.5 font-bold text-slate-900">乗り物酔い止め</td>
+                  <td class="p-2.5 font-bold text-blue-800">멀미약</td>
+                  <td class="p-2.5">モルミヤッ</td>
+                  <td class="p-2.5">トボミン (토보민), イジロン</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="mt-3 text-xs text-slate-500">
+            ※タイレノール、一部風邪薬、消化剤、絆創膏は24時間コンビニ（CU・GS25・セブンイレブン）でも購入可能です。
+          </div>
+        </div>
+
+        <!-- 24시간 약국 & 병원 안내 -->
+        <div class="solid-card rounded-lg p-5 flex flex-col justify-between">
+          <div>
+            <span class="badge-solid badge-slate mb-2">医療機関</span>
+            <h3 class="text-base font-bold text-slate-900">夜間薬局と外国人対応病院</h3>
+            <p class="mt-2 text-xs text-slate-600 leading-relaxed">
+              深夜に体調を崩した場合は、年中無休の「休日守り薬局（휴일지킴이약국 / pharm114.or.kr）」で近隣の営業店舗を検索できます。
+            </p>
+            <div class="mt-4 p-3 bg-slate-100 rounded text-xs text-slate-800 space-y-1">
+              <div class="font-bold text-slate-900">日本語対応可能な主要病院：</div>
+              <div>・ソウル大学病院 国際診療センター</div>
+              <div>・セブランス病院 国際診療所（新村）</div>
+              <div>・アサン病院 国際診療センター</div>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-200 text-xs text-slate-500">
+            海外旅行保険の付帯サポート窓口への連絡も有効です。
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 긴급 연락처 다이렉트 카드 -->
+      <h3 class="text-lg font-bold text-slate-900 mb-3">知っておくべき緊急連絡先（24時間対応）</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        
+        <div class="solid-card rounded-lg p-4 border-l-4 border-l-blue-600">
+          <div class="text-xs text-slate-500 font-bold">警察通報（犯罪・盗難）</div>
+          <div class="text-2xl font-black text-slate-900 mt-1">112</div>
+          <p class="text-xs text-slate-600 mt-1">通話開始後「ジャパニーズ プリーズ」で通訳接続</p>
+        </div>
+
+        <div class="solid-card rounded-lg p-4 border-l-4 border-l-rose-600">
+          <div class="text-xs text-slate-500 font-bold">救急車・消防（急病・事故）</div>
+          <div class="text-2xl font-black text-slate-900 mt-1">119</div>
+          <p class="text-xs text-slate-600 mt-1">24時間外国人救急通訳サービスあり</p>
+        </div>
+
+        <div class="solid-card rounded-lg p-4 border-l-4 border-l-emerald-600">
+          <div class="text-xs text-slate-500 font-bold">観光通訳案内（韓国観光公社）</div>
+          <div class="text-2xl font-black text-emerald-700 mt-1">1330</div>
+          <p class="text-xs text-slate-600 mt-1"><strong>日本語完全対応・年中無休・通話無料</strong></p>
+        </div>
+
+        <div class="solid-card rounded-lg p-4 border-l-4 border-l-slate-600">
+          <div class="text-xs text-slate-500 font-bold">在韓国日本国大使館（ソウル）</div>
+          <div class="text-sm font-bold text-slate-900 mt-1">02-739-7400</div>
+          <p class="text-xs text-slate-600 mt-1">パスポート紛失などの領事窓口</p>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       11. 푸터 (Footer)
+       ======================================================================== -->
+  <footer class="bg-slate-900 text-slate-300 py-10 border-t border-slate-800 print-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        
+        <div>
+          <div class="flex items-center gap-2 text-white mb-2">
+            <span class="w-7 h-7 rounded bg-blue-600 text-white flex items-center justify-center font-bold text-sm">K</span>
+            <span class="font-extrabold text-lg tracking-tight">K-TRIP NAVI</span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            日本人旅行者のための2026年最新型韓国旅行総合ポータル。<br>
+            正確な最新規定と現地ですぐに役立つ実戦的な情報を提供しています。
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-sm font-bold text-white mb-3">公式リンク（韓国政府・公的機関）</h3>
+          <ul class="text-xs space-y-2 text-slate-300">
+            <li>
+              <a href="https://japanese.visitkorea.or.kr" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400 underline transition-colors">
+                韓国観光公社 (Visit Korea 日本語) [外部サイト]
+              </a>
+            </li>
+            <li>
+              <a href="https://www.hikorea.go.kr" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400 underline transition-colors">
+                出入国在留管理局 (Hi Korea) [外部サイト]
+              </a>
+            </li>
+            <li>
+              <a href="https://www.airport.kr" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400 underline transition-colors">
+                仁川国際空港公式ポータル [外部サイト]
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-sm font-bold text-white mb-3">運営情報・免責事項</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            掲載情報は2026年9月現在の公的基準に基づき作成されています。出入国規定や為替・制度は予告なく変更される場合がありますので、渡航前に公的機関の最新発表も併せてご確認ください。
+          </p>
+        </div>
+
+      </div>
+
+      <div class="pt-6 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-2">
+        <span>© 2026 K-TRIP NAVI. All rights reserved.</span>
+        <span>2026年9月 最新規定反映</span>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       12. 플로팅 긴급 버튼 (FAB - Floating Action Button)
+       ======================================================================== -->
+  <div id="fabContainer" class="fixed bottom-6 right-6 z-40 print-hidden">
+    
+    <!-- 미니 긴급 팝업 메뉴 -->
+    <div id="fabMenu" class="hidden mb-3 w-64 bg-white rounded-lg shadow-2xl border border-slate-300 p-4" role="dialog" aria-label="緊急連絡ショートカット">
+      <div class="flex items-center justify-between pb-2 border-b border-slate-200">
+        <span class="text-xs font-bold text-rose-700">緊急ワンタッチ発信</span>
+        <button id="fabCloseBtn" type="button" aria-label="閉じる" class="p-1 text-slate-400 hover:text-slate-700">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      <div class="mt-3 space-y-2 text-xs">
+        <a href="tel:1330" class="flex items-center justify-between p-2 rounded bg-emerald-50 text-emerald-900 hover:bg-emerald-100 font-bold border border-emerald-200">
+          <span>観光通訳案内（日本語無料）</span>
+          <span class="text-sm">1330</span>
+        </a>
+        <a href="tel:119" class="flex items-center justify-between p-2 rounded bg-rose-50 text-rose-900 hover:bg-rose-100 font-bold border border-rose-200">
+          <span>救急・消防（急病・火災）</span>
+          <span class="text-sm">119</span>
+        </a>
+        <a href="tel:112" class="flex items-center justify-between p-2 rounded bg-blue-50 text-blue-900 hover:bg-blue-100 font-bold border border-blue-200">
+          <span>警察（事件・盗難・事故）</span>
+          <span class="text-sm">112</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- FAB 메인 토글 버튼 -->
+    <button id="fabMainBtn" type="button" aria-expanded="false" aria-controls="fabMenu" aria-label="緊急時ヘルプメニュー"
+      class="w-14 h-14 rounded-full bg-rose-700 hover:bg-rose-800 text-white shadow-lg flex flex-col items-center justify-center font-bold text-xs border-2 border-white transition-transform active:scale-95 focus:outline-none">
+      <span class="text-base font-black leading-none">SOS</span>
+      <span class="text-[10px] leading-tight">緊急</span>
+    </button>
+  </div>
+
+  <!-- ========================================================================
+       원터치 회화 카드 전체화면 확대 모달 (Phrase Fullscreen Modal)
+       ======================================================================== -->
+  <div id="phraseModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm print-hidden"
+    role="dialog" aria-modal="true" aria-labelledby="modalKoreanText">
+    
+    <!-- 배경 클릭 닫기 오버레이 -->
+    <div id="modalOverlay" class="absolute inset-0"></div>
+
+    <!-- 모달 컨텐츠 박스 (고대비 화이트/다크블루) -->
+    <div class="relative z-10 w-full max-w-lg bg-white rounded-xl shadow-2xl border-4 border-blue-700 p-6 sm:p-8 flex flex-col justify-between">
+      
+      <!-- 모달 헤더 -->
+      <div class="flex items-center justify-between pb-4 border-b border-slate-200">
+        <span id="modalSituationBadge" class="badge-solid badge-blue text-xs font-bold px-3 py-1">場面</span>
+        <button id="modalCloseBtn" type="button" aria-label="閉じる"
+          class="p-2 rounded-full text-slate-400 hover:text-slate-700 hover:bg-slate-100 focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- 현지 전달용 초대형 한글 텍스트 (시인성 극대화) -->
+      <div class="my-6 text-center py-4 bg-blue-50/50 rounded-lg border border-blue-100">
+        <div class="text-xs text-blue-700 font-bold mb-2">[この画面を店員や運転手にお見せください]</div>
+        <div id="modalKoreanText" class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight leading-snug px-2">
+          여기에 한국어가 표시됩니다
+        </div>
+        <div id="modalKatakanaText" class="text-base sm:text-lg font-bold text-blue-800 mt-3">
+          カタカナ読み
+        </div>
+      </div>
+
+      <!-- 일본어 뜻 설명 -->
+      <div class="text-center text-sm font-semibold text-slate-700 mb-6">
+        意味: <span id="modalJapaneseText">日本語の意味</span>
+      </div>
+
+      <!-- 하단 액션 버튼 (TTS 음성 재생 & 닫기) -->
+      <div class="flex gap-3">
+        <button id="modalTtsBtn" type="button"
+          class="flex-1 py-3 px-4 rounded-lg bg-blue-700 hover:bg-blue-800 text-white font-bold text-sm flex items-center justify-center gap-2 transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M18.364 5.636a9 9 0 010 12.728M11 5L6 9H2v6h4l5 4V5z"/>
+          </svg>
+          <span>韓国語で発音を再生</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- jQuery 3.7+ CDN -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  
+  <!-- 메인 스크립트 -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+</html>
