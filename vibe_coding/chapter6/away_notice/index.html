@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>부재 중 알리미</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <!-- Setup form -->
+  <main class="setup-view" id="setupView">
+    <div class="setup-card">
+      <div class="setup-icon">🚪</div>
+      <h1>부재 중 알리미</h1>
+      <p class="setup-sub">잠시 자리를 비울 때 화면에 띄워둘 안내 정보를 입력하세요</p>
+
+      <form id="setupForm">
+        <div class="field">
+          <label for="scheduleInput">일정 (무엇을 하고 있나요?)</label>
+          <input type="text" id="scheduleInput" placeholder="예: 회의 중입니다" maxlength="40" required>
+        </div>
+
+        <div class="field">
+          <label for="returnTimeInput">돌아오는 시간</label>
+          <input type="time" id="returnTimeInput" required>
+          <div class="quick-picks">
+            <button type="button" class="quick-btn" data-minutes="5">+5분</button>
+            <button type="button" class="quick-btn" data-minutes="10">+10분</button>
+            <button type="button" class="quick-btn" data-minutes="30">+30분</button>
+            <button type="button" class="quick-btn" data-minutes="60">+1시간</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="noteInput">기타 안내 문구 (선택)</label>
+          <input type="text" id="noteInput" placeholder="예: 급한 일은 010-0000-0000으로 연락주세요" maxlength="60">
+        </div>
+
+        <p class="field-error" id="formError" hidden></p>
+
+        <button type="submit" class="start-btn">화면에 표시하기</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Fullscreen display -->
+  <main class="display-view hidden" id="displayView">
+    <button type="button" class="edit-btn" id="editBtn" title="정보 수정">✏️ 수정</button>
+
+    <div class="display-content">
+      <p class="current-clock" id="currentClock"></p>
+
+      <p class="schedule-text" id="scheduleDisplay"></p>
+
+      <div class="return-block">
+        <p class="return-label">복귀 예정 시간</p>
+        <p class="return-time" id="returnTimeDisplay"></p>
+      </div>
+
+      <div class="countdown-block" id="countdownBlock">
+        <p class="countdown-label" id="countdownLabel">돌아오기까지</p>
+        <p class="countdown-value" id="countdownDisplay"></p>
+      </div>
+
+      <p class="note-text hidden" id="noteDisplay"></p>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

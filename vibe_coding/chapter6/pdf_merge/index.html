@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDF 합치기</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div class="page">
+    <header class="header">
+      <h1>📎 PDF 합치기</h1>
+      <p class="header-sub">여러 개의 PDF 파일을 원하는 순서로 정렬해서 하나의 PDF로 합쳐드려요</p>
+    </header>
+
+    <main class="card">
+      <div class="drop-zone" id="dropZone">
+        <div class="drop-icon">📁</div>
+        <p class="drop-title">PDF 파일들을 여기로 끌어다 놓거나 클릭해서 선택하세요</p>
+        <p class="drop-sub">여러 파일을 한 번에 선택할 수 있어요 (.pdf)</p>
+        <input type="file" id="fileInput" accept=".pdf" multiple hidden>
+      </div>
+
+      <ul class="file-list hidden" id="fileList"></ul>
+
+      <p class="list-hint hidden" id="listHint">위아래 화살표로 합칠 순서를 조정할 수 있어요</p>
+
+      <div class="actions hidden" id="actions">
+        <button type="button" class="add-more-btn" id="addMoreBtn">파일 추가</button>
+        <button type="button" class="merge-btn" id="mergeBtn" disabled>PDF 합치기</button>
+      </div>
+
+      <div class="status-row hidden" id="loadingRow">
+        <span class="spinner" aria-hidden="true"></span>
+        <span id="loadingText">PDF를 합치는 중이에요...</span>
+      </div>
+
+      <p class="error-msg hidden" id="errorMsg"></p>
+
+      <div class="result-box hidden" id="resultBox">
+        <div class="result-icon">✅</div>
+        <p class="result-title">합치기 완료!</p>
+        <p class="result-meta" id="resultMeta"></p>
+        <div class="result-actions">
+          <a class="download-btn" id="downloadBtn" download="merged.pdf">다운로드</a>
+          <button type="button" class="reset-btn" id="resetBtn">새로 시작하기</button>
+        </div>
+      </div>
+    </main>
+
+    <p class="privacy-note">🔒 업로드한 파일은 서버로 전송되지 않고, 이 브라우저 안에서만 처리돼요.</p>
+  </div>
+
+  <script src="vendor/pdf-lib.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

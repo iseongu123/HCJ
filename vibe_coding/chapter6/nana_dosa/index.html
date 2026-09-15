@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>나나도사 - 오늘의 운세</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Gaegu:wght@700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div class="stars" aria-hidden="true"></div>
+
+  <div class="page">
+    <header class="brand">
+      <div class="brand-badge">🔮</div>
+      <h1 class="brand-title">나나도사</h1>
+      <p class="brand-sub">다섯 원소의 기운으로 오늘의 운세를 점쳐드려요</p>
+    </header>
+
+    <main class="card" id="inputSection">
+      <form id="fortuneForm" novalidate>
+        <div class="field">
+          <label for="nameInput">이름</label>
+          <input type="text" id="nameInput" placeholder="이름을 입력하세요" autocomplete="off">
+          <p class="field-error" id="nameError" hidden>이름을 입력해주세요.</p>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="birthInput">생일</label>
+            <input type="date" id="birthInput">
+            <p class="field-error" id="birthError" hidden>생일을 선택해주세요.</p>
+          </div>
+
+          <div class="field">
+            <label>성별</label>
+            <div class="gender-options" id="genderOptions">
+              <label class="gender-pill">
+                <input type="radio" name="gender" value="male">
+                <span>남성</span>
+              </label>
+              <label class="gender-pill">
+                <input type="radio" name="gender" value="female">
+                <span>여성</span>
+              </label>
+              <label class="gender-pill">
+                <input type="radio" name="gender" value="other">
+                <span>선택 안함</span>
+              </label>
+            </div>
+            <p class="field-error" id="genderError" hidden>성별을 선택해주세요.</p>
+          </div>
+        </div>
+
+        <div class="element-block">
+          <h2>당신의 원소를 골라주세요</h2>
+          <p class="element-sub">마음이 끌리는 원소 하나를 선택하면 운세를 확인할 수 있어요</p>
+
+          <div class="elements-grid" id="elementsGrid" role="radiogroup" aria-label="원소 선택">
+            <button type="button" class="element-card" data-element="fire" data-name="불">
+              <span class="element-icon">🔥</span>
+              <span class="element-label">불</span>
+            </button>
+            <button type="button" class="element-card" data-element="water" data-name="물">
+              <span class="element-icon">💧</span>
+              <span class="element-label">물</span>
+            </button>
+            <button type="button" class="element-card" data-element="wood" data-name="나무">
+              <span class="element-icon">🌳</span>
+              <span class="element-label">나무</span>
+            </button>
+            <button type="button" class="element-card" data-element="earth" data-name="땅">
+              <span class="element-icon">⛰️</span>
+              <span class="element-label">땅</span>
+            </button>
+            <button type="button" class="element-card" data-element="wind" data-name="바람">
+              <span class="element-icon">🍃</span>
+              <span class="element-label">바람</span>
+            </button>
+          </div>
+          <p class="field-error" id="elementError" hidden>원소를 하나 선택해주세요.</p>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">오늘의 운세 보기</button>
+      </form>
+    </main>
+
+    <section class="card result-card hidden" id="resultSection" aria-live="polite">
+      <div class="result-icon" id="resultIcon">🔥</div>
+      <p class="result-greeting" id="resultGreeting"></p>
+      <div class="fortune-box">
+        <p class="fortune-label">오늘의 운세</p>
+        <p class="fortune-text" id="fortuneText"></p>
+      </div>
+      <div class="result-actions">
+        <button type="button" class="again-btn" id="againBtn">같은 정보로 다시 뽑기</button>
+        <button type="button" class="reset-btn" id="resetBtn">처음부터 다시하기</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

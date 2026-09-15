@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lorem Ipsum 생성기</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Inter:wght@400;600;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div class="page">
+    <header class="header">
+      <h1>📝 Lorem Ipsum 생성기</h1>
+      <p class="header-sub">슬라이더를 움직여서 원하는 글자 수만큼 더미 텍스트를 만들어보세요</p>
+    </header>
+
+    <main class="card">
+      <div class="slider-row">
+        <label for="lengthSlider" class="slider-label">글자 수</label>
+        <div class="length-display">
+          <input type="number" id="lengthInput" min="10" max="5000" value="150">
+          <span>자</span>
+        </div>
+      </div>
+
+      <input type="range" id="lengthSlider" min="10" max="5000" step="1" value="150" class="slider">
+
+      <div class="slider-scale">
+        <span>10</span>
+        <span>5000</span>
+      </div>
+
+      <div class="output-wrapper">
+        <textarea id="output" readonly spellcheck="false"></textarea>
+        <button type="button" id="copyBtn" class="copy-btn">복사</button>
+      </div>
+
+      <p class="output-meta"><span id="actualLength">150</span>자 생성됨</p>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

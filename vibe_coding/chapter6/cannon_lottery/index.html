@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>대포 추첨기</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <!-- Setup: enter names -->
+  <main class="setup-view" id="setupView">
+    <div class="setup-card">
+      <div class="setup-icon">🎯</div>
+      <h1>대포 추첨기</h1>
+      <p class="setup-sub">이름을 입력하고 대포를 발사해서 당첨자를 뽑아보세요 (2~8명)</p>
+
+      <div class="name-input-row">
+        <input type="text" id="nameInput" placeholder="이름을 입력하고 Enter" maxlength="8">
+        <button type="button" id="addNameBtn">추가</button>
+      </div>
+      <p class="field-error" id="nameError" hidden></p>
+
+      <ul class="name-chips" id="nameChips"></ul>
+
+      <button type="button" class="start-btn" id="startBtn" disabled>추첨 시작하기</button>
+    </div>
+  </main>
+
+  <!-- Game: cannon + plinko board -->
+  <main class="game-view hidden" id="gameView">
+    <div class="game-header">
+      <h2>🎯 대포 추첨기</h2>
+      <button type="button" class="back-btn" id="backBtn">이름 다시 입력</button>
+    </div>
+
+    <div class="board-wrapper">
+      <canvas id="board" width="600" height="640"></canvas>
+      <div class="winner-overlay hidden" id="winnerOverlay">
+        <div class="winner-card">
+          <p class="winner-label">🎉 당첨자 🎉</p>
+          <p class="winner-name" id="winnerName"></p>
+          <div class="winner-actions">
+            <button type="button" id="fireAgainBtn">다시 뽑기</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button type="button" class="fire-btn" id="fireBtn">💥 발사!</button>
+  </main>
+
+  <script src="vendor/matter.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

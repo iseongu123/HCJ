@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>오디오 편집기</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div class="page">
+    <header class="header">
+      <h1>🎧 오디오 편집기</h1>
+      <p class="header-sub">MP3, WAV 파일을 올려서 포맷 변환, 볼륨 조절, 구간 자르기를 해보세요</p>
+    </header>
+
+    <main class="card">
+      <div class="drop-zone" id="dropZone">
+        <div class="drop-icon">🎵</div>
+        <p class="drop-title">오디오 파일을 여기로 끌어다 놓거나 클릭해서 선택하세요</p>
+        <p class="drop-sub">지원 형식: MP3, WAV 등 브라우저가 재생 가능한 오디오</p>
+        <input type="file" id="fileInput" accept="audio/*,.mp3,.wav,.m4a,.ogg" hidden>
+      </div>
+
+      <div class="status-row hidden" id="loadingRow">
+        <span class="spinner" aria-hidden="true"></span>
+        <span id="loadingText">오디오를 분석하는 중이에요...</span>
+      </div>
+
+      <p class="error-msg hidden" id="errorMsg"></p>
+
+      <div class="editor hidden" id="editor">
+        <div class="file-info">
+          <span class="file-icon">🎵</span>
+          <div class="file-info-text">
+            <p class="file-name" id="fileName"></p>
+            <p class="file-meta" id="fileMeta"></p>
+          </div>
+          <button type="button" class="change-btn" id="changeBtn">다른 파일 선택</button>
+        </div>
+
+        <div class="waveform-wrapper">
+          <canvas id="waveform" width="600" height="120"></canvas>
+          <div class="selection-box" id="selectionBox"></div>
+        </div>
+        <audio id="originalPlayer" controls></audio>
+
+        <div class="control-block">
+          <p class="control-title">✂️ 구간 자르기 (Trim)</p>
+          <div class="field-row">
+            <div class="field">
+              <label for="trimStart">시작 (초)</label>
+              <input type="number" id="trimStart" min="0" step="0.1" value="0">
+            </div>
+            <div class="field">
+              <label for="trimEnd">끝 (초)</label>
+              <input type="number" id="trimEnd" min="0" step="0.1" value="0">
+            </div>
+          </div>
+          <input type="range" id="trimStartSlider" min="0" max="1" step="0.01" value="0" class="slider">
+          <input type="range" id="trimEndSlider" min="0" max="1" step="0.01" value="1" class="slider">
+          <p class="control-hint" id="trimHint"></p>
+        </div>
+
+        <div class="control-block">
+          <p class="control-title">🔊 볼륨 조절</p>
+          <div class="slider-row">
+            <input type="range" id="volumeSlider" min="0" max="200" step="5" value="100" class="slider">
+            <span class="slider-value" id="volumeValue">100%</span>
+          </div>
+        </div>
+
+        <div class="control-block">
+          <p class="control-title">🔁 포맷 변환</p>
+          <div class="format-options">
+            <label class="format-pill">
+              <input type="radio" name="format" value="wav" checked>
+              <span>WAV</span>
+            </label>
+            <label class="format-pill">
+              <input type="radio" name="format" value="mp3">
+              <span>MP3</span>
+            </label>
+          </div>
+        </div>
+
+        <button type="button" class="apply-btn" id="applyBtn">적용하고 내보내기</button>
+
+        <div class="status-row hidden" id="processingRow">
+          <span class="spinner" aria-hidden="true"></span>
+          <span id="processingText">편집한 오디오를 만드는 중이에요...</span>
+        </div>
+
+        <div class="result-box hidden" id="resultBox">
+          <p class="result-label">✅ 완료!</p>
+          <audio id="resultPlayer" controls></audio>
+          <p class="result-meta" id="resultMeta"></p>
+          <a class="download-btn" id="downloadBtn" download="edited_audio">다운로드</a>
+        </div>
+      </div>
+    </main>
+
+    <p class="privacy-note">🔒 업로드한 오디오는 서버로 전송되지 않고, 이 브라우저 안에서만 처리돼요.</p>
+  </div>
+
+  <script src="vendor/lame.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

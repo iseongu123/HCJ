@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>문서 파일 통계 분석기</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div class="page">
+    <header class="header">
+      <h1>📄 문서 파일 통계 분석기</h1>
+      <p class="header-sub">PDF 또는 Word(.docx) 파일을 올리면 글자 수, 단어 수, 공백 개수, 이미지 개수를 분석해드려요</p>
+    </header>
+
+    <main class="card">
+      <div class="drop-zone" id="dropZone">
+        <div class="drop-icon">📁</div>
+        <p class="drop-title">파일을 여기로 끌어다 놓거나 클릭해서 선택하세요</p>
+        <p class="drop-sub">지원 형식: PDF (.pdf), Word (.docx)</p>
+        <input type="file" id="fileInput" accept=".pdf,.docx" hidden>
+      </div>
+
+      <div class="file-info hidden" id="fileInfo">
+        <span class="file-icon" id="fileTypeIcon">📄</span>
+        <div class="file-info-text">
+          <p class="file-name" id="fileName"></p>
+          <p class="file-meta" id="fileMeta"></p>
+        </div>
+        <button type="button" class="change-btn" id="changeBtn">다른 파일 선택</button>
+      </div>
+
+      <div class="status-row hidden" id="loadingRow">
+        <span class="spinner" aria-hidden="true"></span>
+        <span id="loadingText">문서를 분석하는 중이에요...</span>
+      </div>
+
+      <p class="error-msg hidden" id="errorMsg"></p>
+
+      <div class="stats-grid hidden" id="statsGrid">
+        <div class="stat-box">
+          <span class="stat-value" id="charCount">0</span>
+          <span class="stat-label">글자 수 (공백 제외)</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-value" id="wordCount">0</span>
+          <span class="stat-label">단어 수</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-value" id="spaceCount">0</span>
+          <span class="stat-label">공백 개수</span>
+        </div>
+        <div class="stat-box highlight">
+          <span class="stat-value" id="imageCount">0</span>
+          <span class="stat-label">이미지 개수</span>
+        </div>
+      </div>
+    </main>
+
+    <p class="privacy-note">🔒 업로드한 문서는 서버로 전송되지 않고, 이 브라우저 안에서만 분석돼요.</p>
+  </div>
+
+  <script src="vendor/pdf-worker-inline.js"></script>
+  <script src="vendor/pdf.min.js"></script>
+  <script src="vendor/jszip.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

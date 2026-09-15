@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI 계산기</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div class="page">
+    <header class="header">
+      <h1>⚖️ BMI 계산기</h1>
+      <p class="header-sub">키와 몸무게를 입력하면 BMI와 목표 체중까지 알려드려요</p>
+    </header>
+
+    <main class="card">
+      <div class="field-row">
+        <div class="field">
+          <label for="heightInput">키 (cm)</label>
+          <input type="number" id="heightInput" placeholder="예: 170" min="50" max="250" step="0.1">
+        </div>
+        <div class="field">
+          <label for="weightInput">몸무게 (kg)</label>
+          <input type="number" id="weightInput" placeholder="예: 65" min="10" max="300" step="0.1">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>성별</label>
+        <div class="gender-options" id="genderOptions">
+          <label class="gender-pill">
+            <input type="radio" name="gender" value="male" checked>
+            <span>남성</span>
+          </label>
+          <label class="gender-pill">
+            <input type="radio" name="gender" value="female">
+            <span>여성</span>
+          </label>
+        </div>
+      </div>
+
+      <p class="input-hint" id="inputHint">키와 몸무게를 입력하면 결과가 바로 나타나요</p>
+
+      <div class="result-section hidden" id="resultSection">
+        <div class="bmi-result">
+          <p class="bmi-label">내 BMI 지수</p>
+          <p class="bmi-value" id="bmiValue">0.0</p>
+          <span class="bmi-badge" id="bmiBadge">-</span>
+        </div>
+
+        <p class="standard-weight-text">
+          키 기준 표준체중은 <strong id="standardWeight">0</strong>kg이에요.
+        </p>
+
+        <div class="targets-grid">
+          <div class="target-card" id="target90Card">
+            <p class="target-title">표준체중 90%</p>
+            <p class="target-weight"><span id="target90Weight">0</span>kg</p>
+            <p class="target-diff" id="target90Diff">-</p>
+          </div>
+          <div class="target-card" id="target100Card">
+            <p class="target-title">표준체중 100%</p>
+            <p class="target-weight"><span id="target100Weight">0</span>kg</p>
+            <p class="target-diff" id="target100Diff">-</p>
+          </div>
+          <div class="target-card" id="target110Card">
+            <p class="target-title">표준체중 110%</p>
+            <p class="target-weight"><span id="target110Weight">0</span>kg</p>
+            <p class="target-diff" id="target110Diff">-</p>
+          </div>
+        </div>
+
+        <p class="targets-note">
+          ※ 표준체중 대비 90% / 100% / 110% 지점까지 도달하려면 몇 kg을 빼거나 찌워야 하는지 보여드려요.
+        </p>
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
