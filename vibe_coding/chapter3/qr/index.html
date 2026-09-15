@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>smart qr</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="aurora" aria-hidden="true">
+    <div class="blob blob-a"></div>
+    <div class="blob blob-b"></div>
+    <div class="blob blob-c"></div>
+  </div>
+
+  <a class="partner-logo" href="https://nanalab.kr" target="_blank" rel="noopener" aria-label="나나컴퍼니 홈페이지 (새 탭에서 열림)">
+    <img src="assets/logo.png" alt="나나컴퍼니">
+  </a>
+
+  <header class="brand" aria-hidden="false">
+    <svg class="brand-mark" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="0.5" y="0.5" width="7" height="7" rx="1" stroke="currentColor"/>
+      <rect x="2.5" y="2.5" width="3" height="3" fill="currentColor"/>
+      <rect x="12.5" y="0.5" width="7" height="7" rx="1" stroke="currentColor"/>
+      <rect x="14.5" y="2.5" width="3" height="3" fill="currentColor"/>
+      <rect x="0.5" y="12.5" width="7" height="7" rx="1" stroke="currentColor"/>
+      <rect x="2.5" y="14.5" width="3" height="3" fill="currentColor"/>
+      <rect x="12.5" y="12.5" width="2" height="2" fill="currentColor"/>
+      <rect x="15.5" y="12.5" width="2" height="2" fill="currentColor"/>
+      <rect x="12.5" y="15.5" width="2" height="2" fill="currentColor"/>
+      <rect x="17.5" y="15.5" width="2" height="2" fill="currentColor"/>
+      <rect x="15.5" y="17.5" width="2" height="2" fill="currentColor"/>
+      <rect x="18.5" y="12.5" width="1" height="3" fill="currentColor"/>
+      <rect x="12.5" y="18.5" width="3" height="1" fill="currentColor"/>
+    </svg>
+    <span class="brand-name">smart qr</span>
+  </header>
+
+  <main class="stage">
+
+    <!-- QR result -->
+    <section id="qr-stage" class="qr-stage" aria-live="polite">
+      <div class="qr-card">
+        <button type="button" id="qr-button" class="qr-canvas-wrap" aria-label="QR 코드를 JPG로 다운로드">
+          <canvas id="qr-canvas"></canvas>
+          <span class="qr-hover-hint">클릭하면 JPG로 저장돼요</span>
+        </button>
+        <p class="qr-target" id="qr-target-url">–</p>
+        <button type="button" id="reset-btn" class="link-btn">새 QR 코드 만들기</button>
+      </div>
+    </section>
+
+    <!-- URL input -->
+    <section id="input-panel" class="input-panel">
+      <form id="qr-form" novalidate>
+        <p class="eyebrow" id="form-eyebrow">QR CODE GENERATOR</p>
+        <label class="field-label" for="url-input">변환할 URL을 입력하세요</label>
+        <div class="field-row">
+          <input
+            id="url-input"
+            name="url"
+            type="text"
+            inputmode="url"
+            autocomplete="off"
+            autocapitalize="off"
+            spellcheck="false"
+            placeholder="example.com"
+            aria-describedby="url-error"
+          >
+          <button type="submit" class="btn-primary" id="submit-btn">확인</button>
+        </div>
+        <p class="field-error" id="url-error" role="alert"></p>
+      </form>
+    </section>
+
+  </main>
+
+  <script src="vendor/qrcode.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

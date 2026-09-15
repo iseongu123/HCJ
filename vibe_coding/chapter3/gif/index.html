@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Video to GIF</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="aurora" aria-hidden="true">
+    <div class="blob blob-a"></div>
+    <div class="blob blob-b"></div>
+    <div class="blob blob-c"></div>
+  </div>
+
+  <a class="partner-logo" href="https://nanalab.kr" target="_blank" rel="noopener" aria-label="나나컴퍼니 홈페이지 (새 탭에서 열림)">
+    <img src="assets/logo.png" alt="나나컴퍼니">
+  </a>
+
+  <header class="brand">
+    <svg class="brand-mark" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="1.5" y="4" width="17" height="12" rx="2" stroke="currentColor"/>
+      <path d="M8.2 7.6l4.6 2.9-4.6 2.9V7.6Z" fill="currentColor"/>
+    </svg>
+    <span class="brand-name">Video to GIF</span>
+  </header>
+
+  <main class="stage">
+    <section class="hero">
+      <h1 class="hero-title">Video <span class="arrow">&rarr;</span> GIF</h1>
+      <p class="hero-sub">Make your own GIF Animation!</p>
+    </section>
+
+    <div class="dropzone-wrap">
+      <section class="dropzone" id="dropzone">
+        <svg class="dropzone-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M24 30V13" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M17 20l7-7 7 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M11 30v5.5A2.5 2.5 0 0 0 13.5 38h21a2.5 2.5 0 0 0 2.5-2.5V30" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <p class="dropzone-title">동영상을 끌어다 놓으세요</p>
+        <p class="dropzone-sub">MP4 · WEBM · MOV · 최대 29FPS로 변환돼요</p>
+        <button type="button" class="btn-primary" id="pickBtn">파일 선택</button>
+        <input type="file" id="fileInput" multiple hidden accept=".mp4,.webm,.mov,.m4v">
+      </section>
+    </div>
+
+    <section class="results-wrap" id="resultsWrap" hidden>
+      <ul class="video-list" id="videoList"></ul>
+    </section>
+  </main>
+
+  <template id="videoRowTemplate">
+    <li class="video-row">
+      <img class="thumb" alt="">
+      <div class="row-main">
+        <div class="row-top">
+          <span class="file-name"></span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill"></div>
+        </div>
+        <p class="status-text">대기 중…</p>
+      </div>
+      <button type="button" class="download-btn" disabled aria-label="GIF 다운로드">
+        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M10 3v9M10 12l-3.5-3.5M10 12l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M4 14.5V16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </li>
+  </template>
+
+  <script src="vendor/gif.js"></script>
+  <script src="vendor/gif-worker-inline.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

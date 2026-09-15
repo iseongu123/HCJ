@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Doc Compressor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="aurora" aria-hidden="true">
+    <div class="blob blob-a"></div>
+    <div class="blob blob-b"></div>
+    <div class="blob blob-c"></div>
+  </div>
+
+  <a class="partner-logo" href="https://nanalab.kr" target="_blank" rel="noopener" aria-label="나나컴퍼니 홈페이지 (새 탭에서 열림)">
+    <img src="assets/logo.png" alt="나나컴퍼니">
+  </a>
+
+  <header class="brand">
+    <svg class="brand-mark" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M4 2.5h8l4 4V17a0.5 0.5 0 0 1-0.5 0.5h-11A0.5 0.5 0 0 1 4 17V3a0.5 0.5 0 0 1 0.5-0.5Z" stroke="currentColor"/>
+      <path d="M12 2.5V6a0.5 0.5 0 0 0 0.5 0.5H16" stroke="currentColor"/>
+      <path d="M6.5 10.5h7M6.5 13h4.5" stroke="currentColor" stroke-linecap="round"/>
+    </svg>
+    <span class="brand-name">Smart Doc Compressor</span>
+  </header>
+
+  <main class="stage">
+    <div class="dropzone-wrap" id="dropzoneWrap">
+      <section class="dropzone" id="dropzone">
+        <svg class="dropzone-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M24 30V13" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M17 20l7-7 7 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M11 30v5.5A2.5 2.5 0 0 0 13.5 38h21a2.5 2.5 0 0 0 2.5-2.5V30" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h1 class="dropzone-title">Upload or Drop your file!</h1>
+        <p class="dropzone-sub">PDF · Word · PowerPoint · 이미지 파일을 끌어다 놓거나, 버튼을 눌러 선택하세요</p>
+
+        <button type="button" class="btn-primary" id="pickBtn">파일 선택</button>
+        <input type="file" id="fileInput" multiple hidden accept=".pdf,.doc,.docx,.ppt,.pptx,.hwp,.jpg,.jpeg,.png,.webp">
+
+        <div class="format-row" id="formatRow" aria-hidden="true"></div>
+      </section>
+    </div>
+
+    <section class="file-list-wrap">
+      <ul class="file-list" id="fileList"></ul>
+    </section>
+  </main>
+
+  <template id="fileRowTemplate">
+    <li class="file-row">
+      <div class="file-icon"></div>
+      <div class="file-main">
+        <div class="file-top">
+          <span class="file-name"></span>
+          <span class="file-sizes">
+            <span class="size-orig"></span>
+            <span class="size-arrow">→</span>
+            <span class="size-new">—</span>
+            <span class="percent-badge" hidden></span>
+          </span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill"></div>
+        </div>
+        <p class="status-text">대기 중…</p>
+      </div>
+      <button type="button" class="download-btn" disabled aria-label="압축된 파일 다운로드">
+        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M10 3v9M10 12l-3.5-3.5M10 12l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M4 14.5V16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </li>
+  </template>
+
+  <script src="vendor/pdf-lib.min.js"></script>
+  <script src="vendor/jszip.min.js"></script>
+  <script src="vendor/pdfjs/pdf.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

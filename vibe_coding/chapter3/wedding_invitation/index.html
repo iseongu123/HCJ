@@ -1,0 +1,752 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>드미트리 · 로렐라이</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Gowun+Batang:wght@400;700&display=swap');
+
+  :root{
+    --paper:#fbf6ec;
+    --paper-deep:#f1e6d3;
+    --ink:#2c2620;
+    --ink-soft:#746a5c;
+    --sage:#74805b;
+    --sage-deep:#4f5a3d;
+    --gold:#a9843f;
+    --gold-soft:#d9c8a6;
+    --line: rgba(44,38,32,0.14);
+    --card-shadow: 0 30px 80px rgba(44,38,32,0.18);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#201b15;
+      --paper-deep:#17130e;
+      --ink:#f3ead9;
+      --ink-soft:#c3b6a2;
+      --sage:#9aa579;
+      --sage-deep:#c2cd9f;
+      --gold:#d8ba7d;
+      --gold-soft:#5c4f36;
+      --line: rgba(243,234,217,0.16);
+      --card-shadow: 0 30px 80px rgba(0,0,0,0.45);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#201b15;
+    --paper-deep:#17130e;
+    --ink:#f3ead9;
+    --ink-soft:#c3b6a2;
+    --sage:#9aa579;
+    --sage-deep:#c2cd9f;
+    --gold:#d8ba7d;
+    --gold-soft:#5c4f36;
+    --line: rgba(243,234,217,0.16);
+    --card-shadow: 0 30px 80px rgba(0,0,0,0.45);
+  }
+
+  *{ box-sizing:border-box; }
+  html{ -webkit-text-size-adjust:100%; }
+  body{
+    margin:0;
+    background: var(--paper-deep);
+    color:var(--ink);
+    font-family:'Gowun Batang', 'Noto Serif KR', serif;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .stage{
+    display:flex;
+    justify-content:center;
+    padding-block: clamp(0px, 4vw, 48px);
+  }
+  .invite{
+    width:100%;
+    max-width:480px;
+    background:var(--paper);
+    box-shadow: var(--card-shadow);
+    overflow:hidden;
+    position:relative;
+  }
+  @media (min-width:520px){
+    .invite{ border-radius:6px; }
+  }
+
+  img{ max-width:100%; display:block; }
+
+  .eyebrow{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-weight:600;
+    letter-spacing:0.34em;
+    text-transform:uppercase;
+    font-size:0.78rem;
+    color:var(--gold);
+    text-align:center;
+    margin:0 0 14px;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    width:100%;
+    aspect-ratio: 5 / 7;
+    overflow:hidden;
+    background:#111;
+  }
+  .hero img{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:cover;
+    object-position:50% 30%;
+    opacity:0;
+    animation: heroReveal 1.6s ease forwards;
+  }
+  .hero::after{
+    content:"";
+    position:absolute; inset:0;
+    background: linear-gradient(180deg, rgba(20,16,10,0.05) 0%, rgba(20,16,10,0.08) 38%, rgba(20,16,10,0.78) 100%);
+  }
+  .hero-content{
+    position:absolute; left:0; right:0; bottom:0;
+    padding: 0 28px 36px;
+    text-align:center;
+    color:#fbf6ec;
+    z-index:2;
+    opacity:0;
+    transform: translateY(14px);
+    animation: heroTextIn 1.1s ease 0.5s forwards;
+  }
+  .hero-title{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-weight:500;
+    font-size: clamp(2rem, 8vw, 2.6rem);
+    letter-spacing:0.02em;
+    margin:0 0 10px;
+    text-wrap:balance;
+  }
+  .hero-date{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    font-size:1rem;
+    letter-spacing:0.28em;
+    text-transform:uppercase;
+    margin:0;
+    color:#f1e6d3;
+  }
+  .hero-names{
+    margin:14px 0 0;
+    font-size:0.82rem;
+    letter-spacing:0.22em;
+    color:#e7dcc6;
+  }
+  .hero-scroll{
+    position:absolute; left:50%; bottom:14px; transform:translateX(-50%);
+    width:1px; height:34px;
+    background: linear-gradient(180deg, rgba(251,246,236,0.9), rgba(251,246,236,0));
+    z-index:2;
+  }
+
+  @keyframes heroReveal{
+    from{ opacity:0; transform:scale(1.06); }
+    to{ opacity:1; transform:scale(1); }
+  }
+  @keyframes heroTextIn{
+    from{ opacity:0; transform:translateY(14px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+
+  /* ---------- Sections ---------- */
+  section{ padding: 64px 30px; position:relative; }
+  .section-tight{ padding-top:48px; padding-bottom:48px; }
+
+  .divider{
+    display:flex; align-items:center; justify-content:center;
+    margin: 40px 0;
+    color: var(--sage);
+  }
+  .divider svg{ width:64px; height:18px; }
+
+  h2.heading{
+    font-family:'Gowun Batang', serif;
+    font-weight:700;
+    font-size:1.5rem;
+    text-align:center;
+    margin: 0 0 22px;
+    letter-spacing:0.02em;
+  }
+
+  .prose{
+    max-width:34ch;
+    margin: 0 auto;
+    text-align:center;
+    color: var(--ink-soft);
+    font-size:0.98rem;
+    line-height:2;
+  }
+  .prose p{ margin:0; }
+
+  /* couple block */
+  .couple{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap: 18px;
+    margin-top:40px;
+  }
+  .person{ flex:1; text-align:center; }
+  .person .role{
+    margin:0 0 6px;
+    font-size:0.72rem;
+    letter-spacing:0.3em;
+    color:var(--sage-deep);
+    text-transform:uppercase;
+  }
+  .person .name{
+    font-family:'Gowun Batang', serif;
+    font-weight:700;
+    font-size:1.5rem;
+    margin:0 0 8px;
+    letter-spacing:0.02em;
+  }
+  .person .parents{
+    margin:0;
+    font-size:0.78rem;
+    color:var(--ink-soft);
+    line-height:1.6;
+  }
+  .amp{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.6rem;
+    color:var(--gold);
+    padding-bottom:26px;
+  }
+
+  /* ---------- Gallery ---------- */
+  .gallery{ background:var(--paper-deep); }
+  .gallery-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:8px;
+  }
+  .gallery-grid .wide{ grid-column: 1 / -1; }
+  .gallery-grid figure{ margin:0; overflow:hidden; aspect-ratio: 4/5; }
+  .gallery-grid .wide figure{ aspect-ratio: 16/11; }
+  .gallery-grid img{ width:100%; height:100%; object-fit:cover; }
+
+  /* ---------- Countdown ---------- */
+  .countdown{
+    background: #1c1712;
+    color:#f3ead9;
+    padding: 56px 26px 60px;
+    position:relative;
+    overflow:hidden;
+  }
+  .countdown .eyebrow{ color:#d8ba7d; }
+  .countdown .stars{
+    position:absolute; inset:0; pointer-events:none;
+  }
+  .countdown h2.heading{ color:#f3ead9; }
+  .countdown-sub{
+    text-align:center;
+    color:#b9ab93;
+    font-size:0.86rem;
+    margin: -10px 0 34px;
+    letter-spacing:0.02em;
+  }
+  .flip-grid{
+    display:flex;
+    justify-content:center;
+    flex-wrap:nowrap;
+    gap:8px;
+    perspective: 600px;
+  }
+  .flip-unit{ text-align:center; flex:0 1 auto; min-width:0; }
+  .flip-face{
+    background: linear-gradient(180deg, #2c241a, #221b14);
+    border:1px solid rgba(216,186,125,0.35);
+    border-radius:4px;
+    padding: 12px 10px 10px;
+    display:inline-block;
+    min-width:52px;
+  }
+  .flip-value{
+    display:inline-block;
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    font-size: clamp(1.15rem, 6.5vw, 1.9rem);
+    font-variant-numeric: tabular-nums;
+    color:#f6ecd9;
+    white-space:nowrap;
+    transform-style:preserve-3d;
+    will-change:transform;
+  }
+  .flip-value.flip{ animation: flipDigit 0.6s cubic-bezier(.4,0,.2,1); }
+  @keyframes flipDigit{
+    0%{ transform:rotateX(0deg); }
+    50%{ transform:rotateX(-90deg); }
+    51%{ transform:rotateX(90deg); }
+    100%{ transform:rotateX(0deg); }
+  }
+  .flip-label{
+    display:block;
+    margin-top:8px;
+    font-size:0.7rem;
+    letter-spacing:0.24em;
+    color:#a99a80;
+  }
+  @media (prefers-reduced-motion: reduce){
+    .flip-value.flip{ animation:none; }
+    .hero img, .hero-content{ animation:none; opacity:1; transform:none; }
+  }
+
+  /* ---------- Location ---------- */
+  .venue-name{
+    text-align:center;
+    font-family:'Gowun Batang', serif;
+    font-weight:700;
+    font-size:1.6rem;
+    margin:0 0 4px;
+  }
+  .venue-sub{
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:0.9rem;
+    margin:0 0 6px;
+  }
+  .venue-time{
+    text-align:center;
+    color:var(--gold);
+    font-size:0.84rem;
+    letter-spacing:0.08em;
+    margin: 6px 0 28px;
+  }
+  .btn-row{
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  .btn{
+    appearance:none;
+    border:1px solid var(--line);
+    background:transparent;
+    color:var(--ink);
+    font-family:'Gowun Batang', serif;
+    font-size:0.84rem;
+    padding:11px 18px;
+    border-radius:2px;
+    cursor:pointer;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+  .btn:hover{ border-color:var(--gold); color:var(--gold); }
+  .btn-solid{
+    background:var(--sage-deep);
+    border-color:var(--sage-deep);
+    color:#fbf6ec;
+  }
+  .btn-solid:hover{ opacity:0.92; color:#fbf6ec; border-color:var(--sage-deep); }
+
+  /* ---------- Contact ---------- */
+  .contact-grid{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    margin-top:32px;
+  }
+  .contact-card{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:16px 18px;
+    border:1px solid var(--line);
+    border-radius:3px;
+  }
+  .contact-who{ display:flex; flex-direction:column; gap:2px; }
+  .contact-role{ font-size:0.7rem; letter-spacing:0.24em; color:var(--sage-deep); text-transform:uppercase; }
+  .contact-name{ font-family:'Gowun Batang', serif; font-weight:700; font-size:1.15rem; }
+  .contact-actions{ display:flex; gap:8px; }
+  .icon-btn{
+    width:38px; height:38px;
+    display:flex; align-items:center; justify-content:center;
+    border:1px solid var(--line);
+    border-radius:50%;
+    color:var(--ink);
+    text-decoration:none;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+  .icon-btn:hover{ border-color:var(--gold); color:var(--gold); }
+  .icon-btn svg{ width:16px; height:16px; }
+
+  /* ---------- Gift accordion ---------- */
+  .gift-list{ margin-top:30px; display:flex; flex-direction:column; gap:10px; }
+  .gift-item{ border:1px solid var(--line); border-radius:3px; overflow:hidden; }
+  .gift-summary{
+    list-style:none;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 18px;
+    cursor:pointer;
+    font-size:0.92rem;
+  }
+  .gift-summary::-webkit-details-marker{ display:none; }
+  .gift-summary .plus{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.3rem;
+    color:var(--gold);
+    transition: transform 0.25s ease;
+  }
+  details[open] .plus{ transform:rotate(45deg); }
+  .gift-body{
+    padding: 0 18px 18px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .gift-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    padding:10px 12px;
+    background:var(--paper-deep);
+    border-radius:3px;
+    font-size:0.86rem;
+  }
+  .gift-row .acct{ color:var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .copy-btn{
+    border:1px solid var(--line);
+    background:transparent;
+    color:var(--ink-soft);
+    font-family:'Gowun Batang', serif;
+    font-size:0.76rem;
+    padding:6px 10px;
+    border-radius:2px;
+    cursor:pointer;
+    white-space:nowrap;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+  .copy-btn:hover{ border-color:var(--gold); color:var(--gold); }
+  .copy-btn.copied{ border-color:var(--sage-deep); color:var(--sage-deep); }
+
+  /* ---------- Closing ---------- */
+  .closing{
+    background:var(--paper-deep);
+    text-align:center;
+    padding-bottom:70px;
+  }
+  .closing figure{ margin:0 0 34px; aspect-ratio:5/4; overflow:hidden; }
+  .closing img{ width:100%; height:100%; object-fit:cover; object-position:50% 35%; }
+  .closing-mark{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:2rem;
+    margin:0 0 10px;
+  }
+  .closing-thanks{
+    color:var(--ink-soft);
+    font-size:0.9rem;
+    margin:0 0 4px;
+  }
+  .closing-date{
+    color:var(--gold);
+    font-size:0.78rem;
+    letter-spacing:0.16em;
+  }
+
+  a{ color:inherit; }
+</style>
+</head>
+<body>
+
+
+<div class="stage">
+  <main class="invite">
+
+    <!-- Hero -->
+    <div class="hero">
+      <img src="pictures/together3.jpg" alt="해질녘 해변을 함께 걷는 두 사람">
+      <div class="hero-content">
+        <p class="hero-title">Always be with you</p>
+        <p class="hero-date">2099 · 12 · 26 Saturday</p>
+        <p class="hero-names">DMITRI &nbsp;·&nbsp; LORELEI</p>
+      </div>
+      <div class="hero-scroll" aria-hidden="true"></div>
+    </div>
+
+    <!-- Invitation -->
+    <section>
+      <p class="eyebrow">Invitation</p>
+      <h2 class="heading">초대합니다</h2>
+      <div class="prose">
+        <p>
+          저희의 영원한 사랑을<br>
+          깨지지 않는 약속으로 하늘에 아로새기어<br>
+          서로의 동반자가 되어<br>
+          인생의 여정을 출발하고자 합니다.
+        </p>
+        <p style="margin-top:1.6em;">
+          저희 두 사람의 약속이<br>
+          더욱 빛날 수 있도록<br>
+          부디 방문하시어 따뜻한 격려와<br>
+          축복을 부탁드립니다.
+        </p>
+      </div>
+
+      <div class="divider" aria-hidden="true">
+        <svg viewBox="0 0 64 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 9H24" stroke="currentColor" stroke-width="1"/>
+          <path d="M40 9H64" stroke="currentColor" stroke-width="1"/>
+          <path d="M32 3C34.5 3 36 5.5 36 9C36 12.5 34.5 15 32 15C29.5 15 28 12.5 28 9C28 5.5 29.5 3 32 3Z" stroke="currentColor" stroke-width="1"/>
+          <path d="M32 3V15" stroke="currentColor" stroke-width="1"/>
+        </svg>
+      </div>
+
+      <div class="couple">
+        <div class="person">
+          <p class="role">신랑</p>
+          <h3 class="name">드미트리</h3>
+          <p class="parents">루크사트 · 파르벤의<br>아들</p>
+        </div>
+        <div class="amp">&amp;</div>
+        <div class="person">
+          <p class="role">신부</p>
+          <h3 class="name">로렐라이</h3>
+          <p class="parents">마키아토 · 페르시카의<br>딸</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery section-tight">
+      <p class="eyebrow">Moments</p>
+      <div class="gallery-grid">
+        <figure><img src="pictures/groom.jpg" alt="신랑 드미트리"></figure>
+        <figure><img src="pictures/bride.jpg" alt="신부 로렐라이"></figure>
+        <figure class="wide"><img src="pictures/together1.jpg" alt="정원에서 함께 걷는 두 사람"></figure>
+        <figure class="wide"><img src="pictures/together2.jpg" alt="거리를 함께 걷는 두 사람"></figure>
+      </div>
+    </section>
+
+    <!-- Countdown -->
+    <section class="countdown">
+      <p class="eyebrow">D-Day</p>
+      <h2 class="heading">결혼식까지 남은 시간</h2>
+      <p class="countdown-sub">2099년 12월 26일 토요일 · 오후 12시</p>
+      <div class="flip-grid">
+        <div class="flip-unit" data-unit="days">
+          <div class="flip-face"><span class="flip-value">00</span></div>
+          <span class="flip-label">DAYS</span>
+        </div>
+        <div class="flip-unit" data-unit="hours">
+          <div class="flip-face"><span class="flip-value">00</span></div>
+          <span class="flip-label">HOURS</span>
+        </div>
+        <div class="flip-unit" data-unit="minutes">
+          <div class="flip-face"><span class="flip-value">00</span></div>
+          <span class="flip-label">MIN</span>
+        </div>
+        <div class="flip-unit" data-unit="seconds">
+          <div class="flip-face"><span class="flip-value">00</span></div>
+          <span class="flip-label">SEC</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Location -->
+    <section>
+      <p class="eyebrow">Location</p>
+      <h2 class="heading">오시는 길</h2>
+      <p class="venue-name">나나컨벤션센터</p>
+      <p class="venue-sub">2층 플로렌스홀</p>
+      <p class="venue-time">2099. 12. 26 (토) 오후 12시</p>
+      <div class="btn-row">
+        <a class="btn btn-solid" id="naver-map-link" href="https://map.naver.com/p/search/나나컨벤션센터" target="_blank" rel="noopener">네이버 지도</a>
+        <a class="btn" id="kakao-map-link" href="https://map.kakao.com/?q=나나컨벤션센터" target="_blank" rel="noopener">카카오맵</a>
+        <button class="btn" id="copy-venue" type="button">장소 복사</button>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section-tight">
+      <p class="eyebrow">Contact</p>
+      <h2 class="heading">축하 인사 전하기</h2>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-who">
+            <span class="contact-role">신랑</span>
+            <span class="contact-name">드미트리</span>
+          </div>
+          <div class="contact-actions">
+            <a class="icon-btn" href="tel:01000000000" aria-label="신랑에게 전화하기">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v4a2 2 0 0 1-2 2C9.5 21 3 14.5 3 6a2 2 0 0 1 1-2Z"/></svg>
+            </a>
+            <a class="icon-btn" href="sms:01000000000" aria-label="신랑에게 문자 보내기">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h16v11H8l-4 4V5Z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-who">
+            <span class="contact-role">신부</span>
+            <span class="contact-name">로렐라이</span>
+          </div>
+          <div class="contact-actions">
+            <a class="icon-btn" href="tel:01000000000" aria-label="신부에게 전화하기">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v4a2 2 0 0 1-2 2C9.5 21 3 14.5 3 6a2 2 0 0 1 1-2Z"/></svg>
+            </a>
+            <a class="icon-btn" href="sms:01000000000" aria-label="신부에게 문자 보내기">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h16v11H8l-4 4V5Z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gift -->
+    <section class="section-tight" style="background:var(--paper-deep);">
+      <p class="eyebrow">Gift</p>
+      <h2 class="heading">마음 전하시는 곳</h2>
+      <div class="gift-list">
+        <details class="gift-item">
+          <summary class="gift-summary">신랑측 계좌번호 보기 <span class="plus">+</span></summary>
+          <div class="gift-body">
+            <div class="gift-row">
+              <span class="acct">샤드은행 100-0000-00000<br>예금주 파르벤</span>
+              <button class="copy-btn" type="button" data-copy="샤드은행 100-0000-00000 예금주 파르벤">복사</button>
+            </div>
+          </div>
+        </details>
+        <details class="gift-item">
+          <summary class="gift-summary">신부측 계좌번호 보기 <span class="plus">+</span></summary>
+          <div class="gift-body">
+            <div class="gift-row">
+              <span class="acct">크레딧은행 100-0000-0000<br>예금주 페르시카</span>
+              <button class="copy-btn" type="button" data-copy="크레딧은행 100-0000-0000 예금주 페르시카">복사</button>
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Closing -->
+    <section class="closing">
+      <figure>
+        <img src="pictures/together1.jpg" alt="정원에서 서로를 바라보는 두 사람">
+      </figure>
+      <p class="closing-mark">D &amp; L</p>
+      <p class="closing-thanks">저희의 새로운 시작을<br>함께해 주셔서 감사합니다</p>
+      <p class="closing-date">2099. 12. 26</p>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  (function(){
+    "use strict";
+
+    // 결혼식 일시 — 문구.txt 기준 2099년 12월 26일(토) 오후 12시(정오), KST
+    var WEDDING_DATE = new Date("2099-12-26T12:00:00+09:00");
+
+    function pad(n){ return String(n).padStart(2, "0"); }
+
+    function setUnit(key, val){
+      var wrap = document.querySelector('.flip-unit[data-unit="' + key + '"] .flip-value');
+      if(!wrap) return;
+      if(wrap.dataset.val === val) return;
+      var first = wrap.dataset.val === undefined;
+      wrap.dataset.val = val;
+      if(first){
+        wrap.textContent = val;
+        return;
+      }
+      wrap.classList.remove("flip");
+      void wrap.offsetWidth;
+      wrap.classList.add("flip");
+      setTimeout(function(){ wrap.textContent = val; }, 150);
+    }
+
+    function tick(){
+      var now = new Date();
+      var diff = WEDDING_DATE.getTime() - now.getTime();
+      if(diff < 0) diff = 0;
+      var days = Math.floor(diff / 86400000);
+      var hours = Math.floor(diff / 3600000) % 24;
+      var minutes = Math.floor(diff / 60000) % 60;
+      var seconds = Math.floor(diff / 1000) % 60;
+      setUnit("days", String(days));
+      setUnit("hours", pad(hours));
+      setUnit("minutes", pad(minutes));
+      setUnit("seconds", pad(seconds));
+    }
+
+    tick();
+    setInterval(tick, 1000);
+
+    // 계좌번호 복사
+    document.querySelectorAll(".copy-btn").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        var text = btn.getAttribute("data-copy");
+        var done = function(){
+          var original = btn.textContent;
+          btn.textContent = "복사됨";
+          btn.classList.add("copied");
+          setTimeout(function(){
+            btn.textContent = original;
+            btn.classList.remove("copied");
+          }, 1600);
+        };
+        if(navigator.clipboard && navigator.clipboard.writeText){
+          navigator.clipboard.writeText(text).then(done).catch(function(){
+            fallbackCopy(text, done);
+          });
+        } else {
+          fallbackCopy(text, done);
+        }
+      });
+    });
+
+    var copyVenueBtn = document.getElementById("copy-venue");
+    if(copyVenueBtn){
+      copyVenueBtn.addEventListener("click", function(){
+        var text = "나나컨벤션센터 2층 플로렌스홀";
+        var done = function(){
+          var original = copyVenueBtn.textContent;
+          copyVenueBtn.textContent = "복사됨";
+          setTimeout(function(){ copyVenueBtn.textContent = original; }, 1600);
+        };
+        if(navigator.clipboard && navigator.clipboard.writeText){
+          navigator.clipboard.writeText(text).then(done).catch(function(){ fallbackCopy(text, done); });
+        } else {
+          fallbackCopy(text, done);
+        }
+      });
+    }
+
+    function fallbackCopy(text, done){
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      try{ document.execCommand("copy"); done(); }catch(e){}
+      document.body.removeChild(ta);
+    }
+  })();
+</script>
+
+</body>
+</html>

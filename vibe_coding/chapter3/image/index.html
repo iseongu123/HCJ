@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Image Resizer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="aurora" aria-hidden="true">
+    <div class="blob blob-a"></div>
+    <div class="blob blob-b"></div>
+    <div class="blob blob-c"></div>
+  </div>
+
+  <a class="partner-logo" href="https://nanalab.kr" target="_blank" rel="noopener" aria-label="나나컴퍼니 홈페이지 (새 탭에서 열림)">
+    <img src="assets/logo.png" alt="나나컴퍼니">
+  </a>
+
+  <header class="brand">
+    <svg class="brand-mark" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="2" y="3.5" width="16" height="13" rx="1.6" stroke="currentColor"/>
+      <circle cx="6.5" cy="8" r="1.4" stroke="currentColor"/>
+      <path d="M3 14.5l4.2-4.2a1.4 1.4 0 0 1 2 0L13 14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M11 14l2-2a1.4 1.4 0 0 1 2 0l2 2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span class="brand-name">Smart Image Resizer</span>
+  </header>
+
+  <main class="stage">
+    <div class="dropzone-wrap" id="dropzoneWrap">
+      <section class="dropzone" id="dropzone">
+        <svg class="dropzone-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M24 30V13" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M17 20l7-7 7 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M11 30v5.5A2.5 2.5 0 0 0 13.5 38h21a2.5 2.5 0 0 0 2.5-2.5V30" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h1 class="dropzone-title">사진을 업로드하거나 끌어다 놓으세요</h1>
+        <p class="dropzone-sub">여러 장을 한 번에 올릴 수 있어요</p>
+
+        <button type="button" class="btn-primary" id="pickBtn">파일 선택</button>
+        <input type="file" id="fileInput" multiple hidden accept=".jpg,.jpeg,.png,.webp">
+
+        <div class="format-row" aria-hidden="true">
+          <span class="format-chip"><span class="chip-icon" style="background:var(--col-jpg)">JPG</span><span>JPG</span></span>
+          <span class="format-chip"><span class="chip-icon" style="background:var(--col-png)">PNG</span><span>PNG</span></span>
+          <span class="format-chip"><span class="chip-icon" style="background:var(--col-webp)">WEBP</span><span>WEBP</span></span>
+        </div>
+      </section>
+    </div>
+
+    <section class="settings-panel" id="settingsPanel" hidden>
+      <div class="setting-group">
+        <p class="setting-label">캔버스 비율</p>
+        <div class="chip-row" id="ratioRow">
+          <button type="button" class="opt-chip is-active" data-ratio="1:1">1:1</button>
+          <button type="button" class="opt-chip" data-ratio="3:4">3:4</button>
+          <button type="button" class="opt-chip" data-ratio="4:3">4:3</button>
+          <button type="button" class="opt-chip" data-ratio="9:16">9:16</button>
+          <button type="button" class="opt-chip" data-ratio="16:9">16:9</button>
+          <button type="button" class="opt-chip" id="customRatioBtn" data-ratio="custom">커스텀</button>
+        </div>
+        <div class="custom-ratio-row" id="customRatioRow" hidden>
+          <input type="number" id="customW" min="1" placeholder="W" inputmode="numeric">
+          <span class="ratio-colon">:</span>
+          <input type="number" id="customH" min="1" placeholder="H" inputmode="numeric">
+        </div>
+      </div>
+
+      <div class="setting-group">
+        <p class="setting-label">처리 방식</p>
+        <div class="mode-toggle" id="modeToggle" role="radiogroup" aria-label="처리 방식">
+          <button type="button" class="mode-btn is-active" data-mode="pad">여백 추가</button>
+          <button type="button" class="mode-btn" data-mode="crop">잘라내기</button>
+        </div>
+        <p class="mode-hint" id="modeHint">사진 전체를 유지하면서 남는 공간을 배경색으로 채워요</p>
+      </div>
+
+      <div class="setting-group" id="colorGroup">
+        <p class="setting-label">여백 색상</p>
+        <div class="color-row">
+          <label class="color-swatch">
+            <input type="color" id="bgColorInput" value="#ffffff">
+          </label>
+          <span class="color-hex" id="bgColorHex">#FFFFFF</span>
+          <div class="preset-swatches">
+            <button type="button" class="preset-dot" data-color="#ffffff" style="background:#ffffff" aria-label="흰색"></button>
+            <button type="button" class="preset-dot" data-color="#000000" style="background:#000000" aria-label="검정"></button>
+            <button type="button" class="preset-dot" data-color="#8a2f42" style="background:#8a2f42" aria-label="플럼"></button>
+            <button type="button" class="preset-dot" data-color="#fabc6a" style="background:#fabc6a" aria-label="오렌지"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="results-wrap" id="resultsWrap" hidden>
+      <div class="results-bar">
+        <p class="results-count" id="resultsCount">0 / 0 완료</p>
+        <button type="button" class="btn-batch" id="batchDownloadBtn" disabled>전체 다운로드 (ZIP)</button>
+      </div>
+      <ul class="image-list" id="imageList"></ul>
+    </section>
+  </main>
+
+  <template id="imageRowTemplate">
+    <li class="image-row">
+      <img class="thumb" alt="">
+      <div class="row-main">
+        <div class="row-top">
+          <span class="file-name"></span>
+          <span class="ratio-badge"></span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill"></div>
+        </div>
+        <p class="status-text">대기 중…</p>
+      </div>
+      <button type="button" class="download-btn" disabled aria-label="다운로드">
+        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M10 3v9M10 12l-3.5-3.5M10 12l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M4 14.5V16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </li>
+  </template>
+
+  <script src="vendor/jszip.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
